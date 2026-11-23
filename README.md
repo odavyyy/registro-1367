@@ -20,6 +20,28 @@ Feito por **oDavyy** com o **Claude Code** (Anthropic): o Davy dirigia (referên
 - Sons sintetizados na hora pelo navegador
 - Dica com um passarinho guia, controles de toque e publicação no itch.io
 
+## Finais possíveis
+Um contador escondido, **"ele te notou"** (0 a 5), junto com as pistas e as penas que você acha, decide como a fita termina.
+
+<details>
+<summary><b>Ver os finais (spoiler)</b></summary>
+
+**No protótipo atual (etapa 2):** a fita termina quando você atravessa uma das portas da sala de brincar.
+- **Entardecer** em Naviraí: a praia, a escada ou o campo
+- **Noite** em Naviraí: o navio, a rua ou o quarto
+- A porta vermelha não deixa passar, e uma das portas só dá numa parede
+
+A tela final mostra as pistas (0 a 2), as penas (0 a 3) e quanto ele te notou.
+
+**Os três finais que estão vindo:**
+- **A · Fita ejetada:** ele quase não te notou. A TV desliga, a fita sai sozinha e, lá longe, um "fiu fiu".
+- **B · Conexão perdida:** ele te notou demais. "Conexão perdida", e ele aparece parado bem perto, com os olhos acesos.
+- **C · Registro 1368 (secreto):** todas as pistas e quase nenhuma atenção. Um registro novo, gravado de fora da sua janela.
+</details>
+
+## Save
+O jogo salva sozinho a cada lugar novo, pista e pena. Dá para **continuar** de onde parou, e se ele te pegar na fuga você volta do ponto onde ela começou. O save fica só no navegador de quem joga.
+
 ## Créditos e direitos
 **Passarex, o Arquivo Passarex, os personagens e a lore pertencem a Os Bacanos ([@os_bacanos67](https://www.instagram.com/os_bacanos67/)).** Todos os direitos reservados. Projeto de fã, sem fins lucrativos.
 

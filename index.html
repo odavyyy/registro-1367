@@ -42,6 +42,8 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .tags span{font-family:VT323,monospace;font-size:18px;border:1px solid var(--line);padding:0 8px;border-radius:3px;color:var(--dim)}
   .rights{border-left:3px solid var(--red)}
+  details summary{cursor:pointer;font-size:17px}
+  details ul{padding-left:20px}
   footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:15px}
   @media (max-width:560px){ .lead{font-size:17px} .steps li{padding-left:44px} }
 </style>
@@ -95,6 +97,34 @@
     <div class="card">
       <b>Ferramentas:</b> Claude Code (Anthropic) · three.js · Web Audio · VoiceStudio (voz local) · Playwright (prints e capa) · itch.io
     </div>
+  </section>
+
+  <section>
+    <h2>Finais possíveis</h2>
+    <p>O que você faz durante a fita conta. Um contador escondido, <b>“ele te notou”</b> (de 0 a 5), sobe quando você atende o telefone, encara o vulto, responde à TV ou abre a porta errada. Ele desce quando você fica quieto e obedece. Junto com as pistas e as penas que você acha, ele decide como a fita termina.</p>
+    <details class="card">
+      <summary><b>Ver os finais (spoiler)</b></summary>
+      <h3>No protótipo atual (etapa 2)</h3>
+      <p>A fita termina quando você atravessa uma das portas da sala de brincar. A porta escolhida define como vai ser Naviraí:</p>
+      <ul>
+        <li><b>Entardecer:</b> a praia, a escada ou o campo.</li>
+        <li><b>Noite:</b> o navio, a rua ou o quarto.</li>
+        <li>A <b>porta vermelha</b> não deixa você passar. E uma das portas só dá numa parede.</li>
+      </ul>
+      <p>A tela final mostra as pistas (0 a 2), as penas (0 a 3) e quanto <i>ele te notou</i>.</p>
+      <h3>Os três finais que estão vindo</h3>
+      <ul>
+        <li><b>A · Fita ejetada.</b> Ele quase não te notou. A TV desliga, a fita sai sozinha do videocassete e a casa fica em silêncio. Lá longe, um “fiu fiu”.</li>
+        <li><b>B · Conexão perdida.</b> Ele te notou demais. A tela diz “conexão perdida” e ele aparece parado bem perto, com os olhos acesos. Corta seco.</li>
+        <li><b>C · Registro 1368 (secreto).</b> Todas as pistas e quase nenhuma atenção. A fita mostra um registro novo, gravado de fora da sua janela: a sua casa, vista por ele.</li>
+      </ul>
+      <p style="color:var(--dim)">As três penas das salas amarelas também vão ter uso no final secreto.</p>
+    </details>
+  </section>
+
+  <section>
+    <h2>Save</h2>
+    <p>O jogo salva sozinho a cada lugar novo, a cada pista e a cada pena (aparece <span class="vhs" style="color:#9fe3aa">● SALVO</span> no canto). Se você fechar, na próxima vez dá para <b>continuar</b> de onde parou. Se ele te pegar na fuga, você volta do ponto onde ela começou. O save fica só no seu navegador.</p>
   </section>
 
   <section>
