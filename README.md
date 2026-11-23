@@ -20,6 +20,7 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 - Banca de jornal na praça; padre e Serjão falam do medo da cidade
 - Animação do desejo do Pássaro das Esferas
 - Orelha monta já em 3ª pessoa · correr balança a câmera
+- Luta no celular: joystick pra andar e joystick pra mirar e atirar
 
 ### v2.1 · Crie o seu personagem (23/11/2026)
 - Criação de personagem no começo: menino ou menina, pele e cabelo
