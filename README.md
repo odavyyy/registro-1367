@@ -13,6 +13,14 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v1.7 · Os Portões do Clubex (23/11/2026)
+- Final no céu: um hino te leva aos Portões do Clubex; o Homem-Distinto te recebe e lá dentro fica o salão dos segredos (elenco, história, 67, Bacanos, jukebox)
+- Floresta de cogumelos com o Mago, o Macaco, o Pássaro das Esferas e o Pássaro Cocô
+- Caixa de diálogo e conversas novas contando a lore
+- Serjão assando espeto (só se pedir), o padre na catedral (comunhão ou bênção, com respeito) e o fliperama PEGA A RATABRUMGA!
+- Moedas, 19 conquistas, skins e roupas, e câmera em 3ª pessoa (tecla V)
+- Rádio com "Portões Abertos do Clubex" · letreiro do IF corrigido
+
 ### v1.6 · A luta caprichada, a catedral e o patinete (23/11/2026)
 - Luta do Passarex com bicadas, leque de penas, passarinhos e o giro nas asas, em 3 fases
 - Parry nas penas rosas, cartas de especial (Goiaba EX e SUPER GOIABADA), goiabas douradas de vida e nota no fim
