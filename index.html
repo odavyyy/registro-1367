@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Registro 1367 · como fizemos</title>
 <meta name="description" content="Bastidores do jogo Registro 1367, terror dreamcore do Arquivo Passarex, feito por oDavyy com Claude Code.">
 <meta property="og:title" content="Registro 1367 · Arquivo Passarex">
@@ -53,7 +53,42 @@
   details summary{cursor:pointer;font-size:17px}
   details ul{padding-left:20px}
   footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:15px}
-  @media (max-width:560px){ .lead{font-size:17px} .steps li{padding-left:44px} }
+  .nav{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0 0}
+  .nav a{font-family:VT323,monospace;font-size:19px;text-decoration:none;color:var(--dim);border:1px solid var(--line);border-radius:20px;padding:2px 12px;white-space:nowrap}
+  details.log summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+  details.log summary::-webkit-details-marker{display:none}
+  details.log summary::after{content:'+';font-family:VT323,monospace;font-size:28px;color:var(--dim);line-height:1}
+  details.log[open] summary::after{content:'−'}
+  .playbar{display:none}
+  @media (max-width:640px){
+    body{font-size:16px}
+    .wrap{padding:0 16px}
+    header{padding:24px 0 10px}
+    header .tag{font-size:15px;line-height:1.3}
+    .lead{font-size:17px}
+    .cover{margin-top:18px}
+    .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btns .btn{text-align:center;padding:12px 8px;font-size:22px}
+    .btns .btn.main{grid-column:1 / -1;font-size:28px;padding:14px 8px}
+    .nav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:16px -16px 0;padding:0 16px 6px;scrollbar-width:none}
+    .nav::-webkit-scrollbar{display:none}
+    .nav a{font-size:20px;padding:5px 14px}
+    section{padding:26px 0;scroll-margin-top:10px}
+    h2{font-size:34px}
+    .card{padding:14px}
+    .log ul,details ul{padding-left:18px}
+    .log li,details li{margin:4px 0}
+    .grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:10px;margin:14px -16px 0;padding:0 16px 8px;scrollbar-width:none}
+    .grid::-webkit-scrollbar{display:none}
+    .grid figure{flex:0 0 86%;scroll-snap-align:center}
+    .swipe{display:block;color:var(--dim);font-size:14px;margin-top:4px}
+    .steps li{padding:12px 0 12px 42px}
+    .steps li::before{font-size:28px;top:8px}
+    .playbar{display:block;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:9;text-align:center;font-family:VT323,monospace;font-size:26px;text-decoration:none;background:var(--gold);color:#1a1300;border-radius:6px;padding:10px;box-shadow:0 8px 30px rgba(0,0,0,.7);transform:translateY(160%);transition:transform .25s}
+    .playbar.on{transform:none}
+    footer{padding-bottom:96px}
+  }
+  .swipe{display:none}
 </style>
 </head>
 <body>
@@ -68,9 +103,12 @@
       <a class="btn" href="https://youtu.be/6tqPn_Aw5b8">▶ TRAILER</a>
       <a class="btn" href="https://www.instagram.com/odavyyy1/">INSTAGRAM</a>
     </div>
+    <nav class="nav">
+      <a href="#trailer">Trailer</a><a href="#atualizacoes">Atualizações</a><a href="#prints">Prints</a><a href="#como">Como foi feito</a><a href="#finais">Finais</a><a href="#creditos">Créditos</a>
+    </nav>
   </header>
 
-  <section>
+  <section id="trailer">
     <h2>Trailer</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6tqPn_Aw5b8" title="Trailer do Registro 1367" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
     <p class="card" style="margin-top:14px">📼 <b>O jogo recebe atualizações sempre que possível.</b> A mais nova trouxe a avenida de Naviraí, a página de colorir e os três finais. <a href="#atualizacoes">Ver todas as atualizações</a> · segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber da próxima.</p>
@@ -95,9 +133,8 @@
       </ul>
     </div>
 
-    <div class="card log old">
-      <h3>v1.1 · Menu, opções e trilha sonora</h3>
-      <div class="when">23 de novembro de 2026</div>
+    <details class="card log old">
+      <summary><span><h3>v1.1 · Menu, opções e trilha sonora</h3><span class="when">23 de novembro de 2026</span></span></summary>
       <ul>
         <li><b>Menu principal novo:</b> Continuar (mostra onde você parou), Novo jogo, Opções, Como jogar, Créditos e o trailer.</li>
         <li><b>Opções:</b> volume geral, volume da música, música do menu ligada ou desligada, legendas das vozes, sensibilidade da câmera e tela cheia. Elas ficam salvas no navegador.</li>
@@ -107,11 +144,10 @@
         <li>Link do trailer no menu, na pausa e no fim.</li>
         <li>Correção: os textos tortos que apareciam no começo.</li>
       </ul>
-    </div>
+    </details>
 
-    <div class="card log old">
-      <h3>v1.0 · Lançamento</h3>
-      <div class="when">22 de novembro de 2026</div>
+    <details class="card log old">
+      <summary><span><h3>v1.0 · Lançamento</h3><span class="when">22 de novembro de 2026</span></span></summary>
       <ul>
         <li>A sala de casa, as colinas, as salas amarelas e a sala de brincar.</li>
         <li>Vozes do Passarex e do narrador, sustos, falhas de tela e a fuga nas salas amarelas.</li>
@@ -119,22 +155,23 @@
         <li>Funciona no PC e no celular.</li>
         <li>Save automático: ao morrer ou fechar o jogo, você volta do último lugar.</li>
       </ul>
-    </div>
+    </details>
 
     <div class="card soon">
       <b>Vem aí:</b> as próximas partes saem sempre que possível. Segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para ver primeiro.
     </div>
   </section>
 
-  <section>
+  <section id="oque">
     <h2>O que é</h2>
     <p>Registro 1367 é um protótipo de jogo do <b>Arquivo Passarex</b>, inspirado na lore d’<b>Os Bacanos</b>: o Passarex, o pássaro com cabeça de gente que aparece parado ao longe em Naviraí e só assobia. Você assiste a uma fita velha do “Canal dos Passarinhos” e é puxado para dentro dela.</p>
     <p>Lá dentro tem colinas de sonho com uma casinha rosa, salas amarelas que não terminam, uma sala de brincar com oito portas e a avenida de Naviraí, com uma escola e uma folhinha para pintar. Tem escolhas que mudam o quanto <i>ele te notou</i>, pistas escondidas, uma fuga e alguns sustos.</p>
     <div class="tags"><span>analog horror</span><span>dreamcore</span><span>backrooms</span><span>psx</span><span>primeira pessoa</span><span>10–15 min</span><span>PC e celular</span></div>
   </section>
 
-  <section>
+  <section id="prints">
     <h2>Prints</h2>
+    <span class="swipe">deslize para o lado →</span>
     <div class="grid">
       <figure><img src="imagens/1-sala.jpg" alt="Sala de casa à noite com a TV passando a fita"><figcaption>A sala de casa, 1997. A fita está passando.</figcaption></figure>
       <figure><img src="imagens/2-janela.jpg" alt="Vulto parado debaixo do poste visto pela janela"><figcaption>Cada vez que você desvia o olhar, ele está mais perto.</figcaption></figure>
@@ -145,26 +182,26 @@
     </div>
   </section>
 
-  <section>
+  <section id="como">
     <h2>Como a gente fez</h2>
     <p>O jogo foi feito por <b>oDavyy</b> conversando com o <b>Claude Code</b>, o agente de programação da Anthropic, numa mesma tarde. O Davy dava a direção (referências, clima, o que estava bom ou não) e o Claude planejava, programava, testava no navegador e ajustava. O código do jogo não está publicado aqui. Esta página só conta o processo.</p>
     <ol class="steps">
       <li><b>Primeiro o plano.</b> Antes de programar, fizemos um plano curto: duração, quem é o jogador, quantos finais, quais lugares e uma lista de etapas pequenas para testar o clima cedo.</li>
       <li><b>Visual de PS1 e fita VHS.</b> É um jogo 3D que roda no navegador. A imagem é desenhada em 320×240 e ampliada, os vértices “tremem” como no PlayStation 1, tem névoa, e por cima vai um filtro de TV de tubo: tela curva, linhas, ruído, cor vazando e a faixa de tracking.</li>
       <li><b>O Passarex continua sendo o desenho da série.</b> Em vez de virar um boneco 3D diferente, o desenho 2D original vira uma figurinha recortada dentro do mundo 3D, sempre virada para você. Colorido nos lugares de sonho, em silhueta com os olhos acesos no escuro.</li>
-      <li><b>Lugares de sonho.</b> A sala de casa de 1997, colinas em forma de mesa ligadas por uma crista (com um olho no lugar do sol), salas amarelas no estilo backrooms montadas como labirinto e uma sala de brincar com nuvens, mezanino, bolinhas que dá para chutar e arco-íris.</li>
+      <li><b>Lugares de sonho.</b> A sala de casa de 1997, colinas em forma de mesa ligadas por uma crista (com um olho no lugar do sol), salas amarelas no estilo backrooms montadas como labirinto, uma sala de brincar com nuvens, mezanino, bolinhas que dá para chutar e arco-íris, e a avenida de Naviraí com uma escola e uma folhinha de verdade para pintar.</li>
       <li><b>Vozes geradas no próprio PC.</b> As falas foram geradas no VoiceStudio local. O Passarex tem voz mais aguda, de criança, passada por um filtro de rádio com engasgos, quedas de sinal e chiado. O narrador do “Arquivo” tem cara de fita velha.</li>
-      <li><b>Som feito na hora.</b> A caixinha de música desafinada, o zumbido das lâmpadas, o telefone, o vento, os passos e o “fiu fiu” são sintetizados pelo navegador enquanto você joga. Não tem arquivo de som, só as vozes.</li>
+      <li><b>Som feito na hora.</b> A caixinha de música desafinada, o zumbido das lâmpadas, o telefone, o vento, os passos e o “fiu fiu” são sintetizados pelo navegador enquanto você joga. Por cima, os sons gravados pelo próprio oDavyy: o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora.</li>
       <li><b>Sustos e uma fuga leve.</b> Alguns quadros rápidos do rosto, falhas de tela com texto e uma fuga nas salas amarelas: ele vem atrás de você, mais devagar que você. Se te pegar, aparece “SINAL PERDIDO” e você volta de onde a fuga começou.</li>
       <li><b>Nunca fica perdido.</b> O botão de dica mostra o que fazer e solta um passarinho amarelo que voa mostrando o caminho e espera por você.</li>
-      <li><b>Celular e publicação.</b> Joystick na tela, arrastar para olhar, botões grandes e tela cheia na horizontal. O jogo inteiro tem uns 1,2 MB e foi publicado no itch.io.</li>
+      <li><b>Celular e publicação.</b> Joystick na tela, arrastar para olhar, botões grandes e tela cheia na horizontal. O jogo inteiro tem uns 9 MB e foi publicado no itch.io.</li>
     </ol>
     <div class="card">
       <b>Ferramentas:</b> Claude Code (Anthropic) · three.js · Web Audio · VoiceStudio (voz local) · Playwright (prints e capa) · itch.io
     </div>
   </section>
 
-  <section>
+  <section id="finais">
     <h2>Finais possíveis</h2>
     <p>O que você faz durante a fita conta. Um contador escondido, <b>“ele te notou”</b>, sobe quando você atende o telefone, encara o vulto, responde à TV, abre a porta errada ou pinta os olhos dele. Junto com as <b>3 pistas</b> e as <b>3 penas</b> que você acha, ele decide como a fita termina.</p>
     <details class="card">
@@ -185,12 +222,12 @@
     </details>
   </section>
 
-  <section>
+  <section id="save">
     <h2>Save</h2>
     <p>O jogo salva sozinho a cada lugar novo, a cada pista e a cada pena (aparece <span class="vhs" style="color:#9fe3aa">● SALVO</span> no canto). Se você fechar, na próxima vez dá para <b>continuar</b> de onde parou. Se ele te pegar na fuga, você volta do ponto onde ela começou. O save fica só no seu navegador.</p>
   </section>
 
-  <section>
+  <section id="creditos">
     <h2>Créditos e direitos</h2>
     <div class="card rights">
       <p><b>Passarex, o Arquivo Passarex, os personagens e toda a lore pertencem a Os Bacanos.</b> Todos os direitos reservados. Este jogo é um projeto de fã inspirado no universo deles, sem fins lucrativos.</p>
@@ -200,7 +237,14 @@
     </div>
   </section>
 
+  <a class="playbar" href="https://odavyyy.itch.io/registro-1367">▶ JOGAR GRÁTIS</a>
   <footer class="vhs">■ FIM DO REGISTRO · AUTENTICIDADE NÃO CONFIRMADA</footer>
 </div>
+<script>
+  // no celular, o botão JOGAR fica fixo embaixo depois que os botões do topo saem da tela
+  const bar = document.querySelector('.playbar'), top = document.getElementById('jogar');
+  if (bar && top && 'IntersectionObserver' in window)
+    new IntersectionObserver(([e]) => bar.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(top);
+</script>
 </body>
 </html>
