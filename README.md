@@ -15,6 +15,12 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.2 · O jornal, o desejo e a luta sem travar (23/11/2026)
+- Corrigido o travamento depois da luta do Passarex (NOCAUTE parado e tecla presa)
+- Banca de jornal na praça; padre e Serjão falam do medo da cidade
+- Animação do desejo do Pássaro das Esferas
+- Orelha monta já em 3ª pessoa · correr balança a câmera
+
 ### v2.1 · Crie o seu personagem (23/11/2026)
 - Criação de personagem no começo: menino ou menina, pele e cabelo
 - 3ª pessoa com animação de andar, centralizada, e montado no Orelha ou no patinete
