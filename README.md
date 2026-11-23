@@ -15,6 +15,10 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.3 · O jogo em inglês (23/11/2026)
+- Opção de idioma: português ou English (tela inicial e Opções). Tudo traduzido; vozes em português com legenda em inglês
+- Now in English! Pick ENGLISH on the start screen
+
 ### v2.2 · O jornal, o desejo e a luta sem travar (23/11/2026)
 - Corrigido o travamento depois da luta do Passarex (NOCAUTE parado e tecla presa)
 - Banca de jornal na praça; padre e Serjão falam do medo da cidade
