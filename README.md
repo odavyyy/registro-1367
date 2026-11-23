@@ -15,6 +15,10 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.4 · A festa nos Portões (23/11/2026)
+- No final, todo mundo na festa: Clubex, Arquivo Passarex, o novo Magnific Cerolitos-Man e os Bacanos (Davy, Luis e Gustavo)
+- Cada personagem avalia a sua partida, e o Boletim do Clubex dá a nota geral
+
 ### v2.3 · O jogo em inglês (23/11/2026)
 - Opção de idioma: português ou English (tela inicial e Opções). Tudo traduzido; vozes em português com legenda em inglês
 - Now in English! Pick ENGLISH on the start screen
