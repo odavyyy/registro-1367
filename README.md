@@ -13,6 +13,10 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v1.5 · Repetir fases e Rádio Clubex FM (23/11/2026)
+- **Menu FASES**: as fases que você termina ficam liberadas pra jogar de novo (sem mexer no save)
+- **Rádio Clubex FM** com as músicas do Suno pelo player do Suno (menu, pausa e o rádio da PobreZa). Primeira faixa: "O Davy escorregou", do oDavyyy
+
 ### v1.4 · O centro de Naviraí e a luta (23/11/2026)
 - **Nova fase: o centro de Naviraí**, com a praça (coreto e catedral), a PobreZa Conveniência e o IFMS Campus Naviraí. Ache o Passarex escondido nos três
 - **Missão do Mago e do Macaco**: goiabas doces com o Pássaro das Esferas (peça!) e azedas com o Pássaro Cocô (ele quer um refri gelado). O Macaco monta as máquinas de goiaba
