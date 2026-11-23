@@ -242,9 +242,12 @@
 </div>
 <script>
   // no celular, o botão JOGAR fica fixo embaixo depois que os botões do topo saem da tela
-  const bar = document.querySelector('.playbar'), top = document.getElementById('jogar');
-  const chk = () => bar.classList.toggle('on', top.getBoundingClientRect().bottom < 0);
-  if (bar && top) { addEventListener('scroll', chk, { passive: true }); addEventListener('resize', chk); chk(); }
+  (() => {
+    const bar = document.querySelector('.playbar'), btn = document.getElementById('jogar');
+    if (!bar || !btn) return;
+    const chk = () => bar.classList.toggle('on', btn.getBoundingClientRect().bottom < 0);
+    addEventListener('scroll', chk, { passive: true }); addEventListener('resize', chk); chk();
+  })();
 </script>
 </body>
 </html>
