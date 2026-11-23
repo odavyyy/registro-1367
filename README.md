@@ -15,6 +15,12 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.1 · Crie o seu personagem (23/11/2026)
+- Criação de personagem no começo: menino ou menina, pele e cabelo
+- 3ª pessoa com animação de andar, centralizada, e montado no Orelha ou no patinete
+- Douradex repete menos · grito gravado só no Passarex, outros sustos com som próprio
+- Corrigido o espetão invisível na mão
+
 ### v2.0 · Inventário, academia e o memorial da Rosinha (23/11/2026)
 - Inventário (I/Tab ou 🎒) com o espeto do Serjão · o ESPETÃO (5 moedas) vai na mão
 - Academia Corpoleo Saudável na praça: supino e agachamento em 3ª pessoa
