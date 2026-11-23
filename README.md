@@ -13,12 +13,20 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v1.6 · A luta caprichada, a catedral e o patinete (23/11/2026)
+- Luta do Passarex com bicadas, leque de penas, passarinhos e o giro nas asas, em 3 fases
+- Parry nas penas rosas, cartas de especial (Goiaba EX e SUPER GOIABADA), goiabas douradas de vida e nota no fim
+- Catedral entrável com o sacrário, feita com respeito (sem susto lá dentro)
+- Patinete elétrico e montar no Cachorro Orelha
+- IF mais detalhado (alas, marquise, bandeiras, bicicletário, portaria)
+- A conveniência agora é Pobresa · correção das texturas piscando
+
 ### v1.5 · Repetir fases e Rádio Clubex FM (23/11/2026)
 - **Menu FASES**: as fases que você termina ficam liberadas pra jogar de novo (sem mexer no save)
-- **Rádio Clubex FM** com as músicas do Suno pelo player do Suno (menu, pausa e o rádio da PobreZa). Primeira faixa: "O Davy escorregou", do oDavyyy
+- **Rádio Clubex FM** com as músicas do Suno pelo player do Suno (menu, pausa e o rádio da Pobresa). Primeira faixa: "O Davy escorregou", do oDavyyy
 
 ### v1.4 · O centro de Naviraí e a luta (23/11/2026)
-- **Nova fase: o centro de Naviraí**, com a praça (coreto e catedral), a PobreZa Conveniência e o IFMS Campus Naviraí. Ache o Passarex escondido nos três
+- **Nova fase: o centro de Naviraí**, com a praça (coreto e catedral), a Pobresa Conveniência e o IFMS Campus Naviraí. Ache o Passarex escondido nos três
 - **Missão do Mago e do Macaco**: goiabas doces com o Pássaro das Esferas (peça!) e azedas com o Pássaro Cocô (ele quer um refri gelado). O Macaco monta as máquinas de goiaba
 - **Luta 2D contra o Passarex**, estilo desenho antigo, com ataques de penas em padrões
 - **Depois da luta**: cidade destruída, leve o café de Naviraí pra polícia fazer o soro antes que ele acorde
