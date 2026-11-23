@@ -9,9 +9,15 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ![Capa](imagens/capa.jpg)
 
-> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.2) trouxe a avenida de Naviraí, a página de colorir e os três finais. Veja a lista em [Atualizações](#atualizações).
+> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.3) trouxe o navio de 1491 com o Douradex, o Plantão no Clubex e 12 segredos escondidos. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v1.3 · 1491 e o Plantão no Clubex (23/11/2026)
+- **Nova fase: Registro 1491.** Um navio no oceano: o Douradex aponta ("É por ali, confia!"), o Colombo duvida, o Tonho te dá o leme. Siga o fiu fiu e descubra as Américas um ano antes de Colombo
+- **Nova fase: a sala branca**, com um joguinho no PC: **Plantão no Clubex**. Vigie portas e câmeras do QG até as 6h
+- **12 segredos do Clubex** escondidos pelo jogo (a tela final mostra quantos você achou)
+- Vozes novas para o Douradex, o Colombo, o Tonho e o narrador
 
 ### v1.2 · A avenida e os finais (23/11/2026)
 - **Nova fase: a avenida de Naviraí.** Lojas fechadas, postes, a locadora com TVs na vitrine e a sua casa no fim da rua. Fim de tarde ou quase meia-noite, conforme a porta escolhida
