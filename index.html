@@ -42,6 +42,12 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .tags span{font-family:VT323,monospace;font-size:18px;border:1px solid var(--line);padding:0 8px;border-radius:3px;color:var(--dim)}
   .rights{border-left:3px solid var(--red)}
+  .log{border-left:3px solid var(--gold)}
+  .log h3{margin:0;font-family:VT323,monospace;font-weight:400;font-size:26px;color:var(--gold)}
+  .log .when{color:var(--dim);font-size:14px}
+  .log ul{margin:6px 0 0;padding-left:20px}
+  .log.old h3{color:var(--ink)}
+  .soon{border-left:3px solid var(--pink)}
   .video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#000}
   .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   details summary{cursor:pointer;font-size:17px}
@@ -67,7 +73,57 @@
   <section>
     <h2>Trailer</h2>
     <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6tqPn_Aw5b8" title="Trailer do Registro 1367" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
-    <p class="card" style="margin-top:14px">📼 <b>O jogo vai receber atualizações sempre que possível.</b> <b>Atualização nova:</b> a avenida de Naviraí, a página de colorir e os três finais já estão no jogo. Segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber quando sair.</p>
+    <p class="card" style="margin-top:14px">📼 <b>O jogo recebe atualizações sempre que possível.</b> A mais nova trouxe a avenida de Naviraí, a página de colorir e os três finais. <a href="#atualizacoes">Ver todas as atualizações</a> · segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber da próxima.</p>
+  </section>
+
+  <section id="atualizacoes">
+    <h2>Atualizações</h2>
+    <p>O que mudou em cada versão. A mais nova fica em cima.</p>
+
+    <div class="card log">
+      <h3>v1.2 · A avenida e os finais</h3>
+      <div class="when">23 de novembro de 2026 · a fita agora tem começo, meio e fim</div>
+      <ul>
+        <li><b>Nova fase: a avenida de Naviraí.</b> Lojas fechadas, postes, a locadora com TVs na vitrine e a sua casa no fim da rua. Fim de tarde ou quase meia-noite, conforme a porta escolhida na sala de brincar.</li>
+        <li><b>Um orelhão que toca.</b> Do outro lado da linha, uma voz conhecida.</li>
+        <li><b>A página de colorir.</b> Uma folhinha de verdade na escola, para pintar com o mouse ou com o dedo. Pense bem antes de pintar os olhos.</li>
+        <li><b>Os três finais:</b> Fita ejetada, Conexão perdida e o secreto, Registro 1368. A tela final mostra quantos você já encontrou.</li>
+        <li>Agora são 3 pistas para achar.</li>
+        <li>12 vozes novas do Passarex e do narrador.</li>
+        <li>Ele agora aparece debaixo dos postes, sempre um pouco à frente.</li>
+        <li>Correção: a tela não fica mais com falha depois da porta vermelha.</li>
+      </ul>
+    </div>
+
+    <div class="card log old">
+      <h3>v1.1 · Menu, opções e trilha sonora</h3>
+      <div class="when">23 de novembro de 2026</div>
+      <ul>
+        <li><b>Menu principal novo:</b> Continuar (mostra onde você parou), Novo jogo, Opções, Como jogar, Créditos e o trailer.</li>
+        <li><b>Opções:</b> volume geral, volume da música, música do menu ligada ou desligada, legendas das vozes, sensibilidade da câmera e tela cheia. Elas ficam salvas no navegador.</li>
+        <li><b>Pausa com botões:</b> Continuar, Opções e Menu principal.</li>
+        <li><b>Sons gravados pelo oDavyy:</b> o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora, que agora toca em loop o jogo inteiro.</li>
+        <li>No celular, botões grandes para escolher as falas.</li>
+        <li>Link do trailer no menu, na pausa e no fim.</li>
+        <li>Correção: os textos tortos que apareciam no começo.</li>
+      </ul>
+    </div>
+
+    <div class="card log old">
+      <h3>v1.0 · Lançamento</h3>
+      <div class="when">22 de novembro de 2026</div>
+      <ul>
+        <li>A sala de casa, as colinas, as salas amarelas e a sala de brincar.</li>
+        <li>Vozes do Passarex e do narrador, sustos, falhas de tela e a fuga nas salas amarelas.</li>
+        <li>Dica com o passarinho guia (tecla H).</li>
+        <li>Funciona no PC e no celular.</li>
+        <li>Save automático: ao morrer ou fechar o jogo, você volta do último lugar.</li>
+      </ul>
+    </div>
+
+    <div class="card soon">
+      <b>Vem aí:</b> as próximas partes saem sempre que possível. Segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para ver primeiro.
+    </div>
   </section>
 
   <section>

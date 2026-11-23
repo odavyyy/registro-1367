@@ -9,7 +9,29 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ![Capa](imagens/capa.jpg)
 
-> 📼 **O jogo vai receber atualizações sempre que possível.** Nova atualização: a avenida de Naviraí, a página de colorir e os três finais já estão no jogo.
+> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.2) trouxe a avenida de Naviraí, a página de colorir e os três finais. Veja a lista em [Atualizações](#atualizações).
+
+## Atualizações
+
+### v1.2 · A avenida e os finais (23/11/2026)
+- **Nova fase: a avenida de Naviraí.** Lojas fechadas, postes, a locadora com TVs na vitrine e a sua casa no fim da rua. Fim de tarde ou quase meia-noite, conforme a porta escolhida
+- **Um orelhão que toca.** Do outro lado da linha, uma voz conhecida
+- **A página de colorir:** uma folhinha na escola para pintar com o mouse ou com o dedo. Pense bem antes de pintar os olhos
+- **Os três finais:** Fita ejetada, Conexão perdida e o secreto, Registro 1368. A tela final mostra quantos você já encontrou
+- 3 pistas para achar, 12 vozes novas, e ele agora aparece debaixo dos postes
+- Correção: a tela não fica mais com falha depois da porta vermelha
+
+### v1.1 · Menu, opções e trilha sonora (23/11/2026)
+- Menu principal novo (Continuar, Novo jogo, Opções, Como jogar, Créditos, trailer)
+- Opções: volume, música, música do menu liga/desliga, legendas, sensibilidade da câmera, tela cheia
+- Pausa com botões (Continuar, Opções, Menu principal)
+- Sons gravados pelo oDavyy: "fiu fiu", grito dos sustos, música do menu e trilha sonora em loop o jogo inteiro
+- Botões grandes para as escolhas no celular · correção dos textos tortos no começo
+
+### v1.0 · Lançamento (22/11/2026)
+- A sala de casa, as colinas, as salas amarelas e a sala de brincar
+- Vozes, sustos, falhas de tela, a fuga e a dica com o passarinho guia
+- PC e celular · save automático
 
 ## O que é
 Um protótipo de jogo do **Arquivo Passarex**, inspirado na lore d'**Os Bacanos**. Você assiste a uma fita do "Canal dos Passarinhos" e é puxado para dentro dela: colinas de sonho com uma casinha rosa, salas amarelas no estilo backrooms, uma sala de brincar com oito portas e a avenida de Naviraí, com uma escola e uma folhinha para pintar. São 10 a 15 minutos, com escolhas, pistas, uma fuga e alguns sustos. Funciona no PC e no celular.
