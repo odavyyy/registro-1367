@@ -13,6 +13,13 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v1.8 · Capítulos, o Orelha de verdade e o helicóptero (23/11/2026)
+- 12 capítulos bem separados; volte em qualquer um pelo menu e veja moedas e segredos que faltam
+- Menu mais simples (Extras reúne conquistas, skins, rádio, créditos e trailer)
+- Orelha: visão de quem está montado, 3 marchas, passeia sozinho, dá pra chamar ([C]) e fazer carinho
+- Helicóptero vazio caindo na avenida · fiéis na catedral te encarando · música abaixa nas conversas
+- Correções: chão piscando, faixas no céu, legenda atrás do Orelha
+
 ### v1.7 · Os Portões do Clubex (23/11/2026)
 - Final no céu: um hino te leva aos Portões do Clubex; o Homem-Distinto te recebe e lá dentro fica o salão dos segredos (elenco, história, 67, Bacanos, jukebox)
 - Floresta de cogumelos com o Mago, o Macaco, o Pássaro das Esferas e o Pássaro Cocô
