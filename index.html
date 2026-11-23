@@ -42,6 +42,8 @@
   .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
   .tags span{font-family:VT323,monospace;font-size:18px;border:1px solid var(--line);padding:0 8px;border-radius:3px;color:var(--dim)}
   .rights{border-left:3px solid var(--red)}
+  .video{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#000}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
   details summary{cursor:pointer;font-size:17px}
   details ul{padding-left:20px}
   footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:15px}
@@ -57,9 +59,16 @@
     <img class="cover" src="imagens/capa.jpg" alt="Capa do jogo Registro 1367: colinas verdes, uma casinha rosa e a silhueta do Passarex com olhos acesos">
     <div class="btns">
       <a class="btn main" id="jogar" href="https://odavyyy.itch.io/registro-1367">▶ JOGAR NO ITCH.IO</a>
+      <a class="btn" href="https://youtu.be/6tqPn_Aw5b8">▶ TRAILER</a>
       <a class="btn" href="https://www.instagram.com/odavyyy1/">INSTAGRAM</a>
     </div>
   </header>
+
+  <section>
+    <h2>Trailer</h2>
+    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6tqPn_Aw5b8" title="Trailer do Registro 1367" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+    <p class="card" style="margin-top:14px">📼 <b>O jogo vai receber atualizações sempre que possível.</b> A próxima parte é a avenida de Naviraí, a página de colorir e os três finais. Segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber quando sair.</p>
+  </section>
 
   <section>
     <h2>O que é</h2>

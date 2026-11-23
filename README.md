@@ -4,9 +4,12 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 🔗 **Página:** https://odavyyy.github.io/registro-1367/
 ▶️ **Jogar:** https://odavyyy.itch.io/registro-1367
+🎬 **Trailer:** https://youtu.be/6tqPn_Aw5b8
 📸 **Instagram:** https://www.instagram.com/odavyyy1/
 
 ![Capa](imagens/capa.jpg)
+
+> 📼 **O jogo vai receber atualizações sempre que possível.** Próxima parte: a avenida de Naviraí, a página de colorir e os três finais.
 
 ## O que é
 Um protótipo de jogo do **Arquivo Passarex**, inspirado na lore d'**Os Bacanos**. Você assiste a uma fita do "Canal dos Passarinhos" e é puxado para dentro dela: colinas de sonho com uma casinha rosa, salas amarelas no estilo backrooms e uma sala de brincar com oito portas. São 10 a 15 minutos, com escolhas, pistas, uma fuga e alguns sustos. Funciona no PC e no celular.
