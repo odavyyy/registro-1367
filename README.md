@@ -9,9 +9,18 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ![Capa](imagens/capa.jpg)
 
-> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.4) trouxe o centro de Naviraí, a missão do Mago e do Macaco e a luta contra o Passarex. Veja a lista em [Atualizações](#atualizações).
+> 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
+>
+> 📼 A mais nova (v2.0) trouxe inventário, a academia Corpoleo Saudável, o memorial da Rosinha e os créditos com tira-dúvidas. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.0 · Inventário, academia e o memorial da Rosinha (23/11/2026)
+- Inventário (I/Tab ou 🎒) com o espeto do Serjão · o ESPETÃO (5 moedas) vai na mão
+- Academia Corpoleo Saudável na praça: supino e agachamento em 3ª pessoa
+- Memorial da Rosinha na catedral
+- Créditos no final (oDavyy e Os Bacanos) e tira-dúvidas sobre cada coisa do jogo
+- Versão ALFA e botão 🐞 Relatar um bug (Issues do GitHub)
 
 ### v1.9 · Tutoriais, câmera F5 e mais sustos (23/11/2026)
 - Tutoriais por capítulo, tela de controles antes da luta e objetivo sempre na tela

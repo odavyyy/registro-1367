@@ -1,0 +1,34 @@
+name: "🐞 Relatar um bug"
+description: "Achou um problema no Registro 1367? Conta pra gente. O jogo está em alfa e a gente corrige o mais rápido possível."
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Valeu por ajudar! O jogo está em **alfa** e recebe atualização quase todo dia."
+  - type: input
+    id: onde
+    attributes:
+      label: "Em que capítulo / lugar aconteceu?"
+      placeholder: "ex.: Cap. 5 · Registro 1491, no leme"
+    validations:
+      required: true
+  - type: textarea
+    id: oque
+    attributes:
+      label: "O que aconteceu?"
+      description: "O que você fez e o que deu errado. Se puder, cole um print."
+    validations:
+      required: true
+  - type: dropdown
+    id: aparelho
+    attributes:
+      label: "Onde você jogou?"
+      options: ["PC", "Celular (Android)", "Celular (iPhone)", "Outro"]
+    validations:
+      required: true
+  - type: input
+    id: navegador
+    attributes:
+      label: "Navegador (se souber)"
+      placeholder: "Chrome, Edge, Firefox, Safari..."
