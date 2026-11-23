@@ -22,6 +22,7 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 - Orelha monta já em 3ª pessoa · correr balança a câmera
 - Luta no celular: joystick pra andar e joystick pra mirar e atirar
 - O sino da catedral toca de vez em quando na praça
+- Show do El Rosengo no coreto com a banda dos Acerolitos (som só de perto)
 
 ### v2.1 · Crie o seu personagem (23/11/2026)
 - Criação de personagem no começo: menino ou menina, pele e cabelo
