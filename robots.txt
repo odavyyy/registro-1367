@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://odavyyy.github.io/registro-1367/sitemap.xml
