@@ -60,6 +60,7 @@
   details.log summary::after{content:'+';font-family:VT323,monospace;font-size:28px;color:var(--dim);line-height:1}
   details.log[open] summary::after{content:'−'}
   .playbar{display:none}
+  .swipe{display:none}
   @media (max-width:640px){
     body{font-size:16px}
     .wrap{padding:0 16px}
@@ -88,7 +89,6 @@
     .playbar.on{transform:none}
     footer{padding-bottom:96px}
   }
-  .swipe{display:none}
 </style>
 </head>
 <body>
@@ -243,8 +243,8 @@
 <script>
   // no celular, o botão JOGAR fica fixo embaixo depois que os botões do topo saem da tela
   const bar = document.querySelector('.playbar'), top = document.getElementById('jogar');
-  if (bar && top && 'IntersectionObserver' in window)
-    new IntersectionObserver(([e]) => bar.classList.toggle('on', !e.isIntersecting && e.boundingClientRect.top < 0)).observe(top);
+  const chk = () => bar.classList.toggle('on', top.getBoundingClientRect().bottom < 0);
+  if (bar && top) { addEventListener('scroll', chk, { passive: true }); addEventListener('resize', chk); chk(); }
 </script>
 </body>
 </html>
