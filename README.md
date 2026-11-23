@@ -13,6 +13,14 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v1.9 · Tutoriais, câmera F5 e mais sustos (23/11/2026)
+- Tutoriais por capítulo, tela de controles antes da luta e objetivo sempre na tela
+- Câmera estilo F5: 1ª pessoa, por trás (sobre o ombro) e de frente
+- Controles da luta mais fáceis (Espaço, clique, Shift, clique direito, Q)
+- Título e narração em cada capítulo contando a história
+- Mais sustos do Passarex te seguindo · navio com mar em movimento e moedas no mar · céus com lua e nuvens
+- Plantão no Clubex com a ligação do Homem-Distinto · menos moedas e preços menores
+
 ### v1.8 · Capítulos, o Orelha de verdade e o helicóptero (23/11/2026)
 - 12 capítulos bem separados; volte em qualquer um pelo menu e veja moedas e segredos que faltam
 - Menu mais simples (Extras reúne conquistas, skins, rádio, créditos e trailer)
