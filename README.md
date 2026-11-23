@@ -9,9 +9,16 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ![Capa](imagens/capa.jpg)
 
-> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.3) trouxe o navio de 1491 com o Douradex, o Plantão no Clubex e 12 segredos escondidos. Veja a lista em [Atualizações](#atualizações).
+> 📼 **O jogo recebe atualizações sempre que possível.** A mais nova (v1.4) trouxe o centro de Naviraí, a missão do Mago e do Macaco e a luta contra o Passarex. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v1.4 · O centro de Naviraí e a luta (23/11/2026)
+- **Nova fase: o centro de Naviraí**, com a praça (coreto e catedral), a PobreZa Conveniência e o IFMS Campus Naviraí. Ache o Passarex escondido nos três
+- **Missão do Mago e do Macaco**: goiabas doces com o Pássaro das Esferas (peça!) e azedas com o Pássaro Cocô (ele quer um refri gelado). O Macaco monta as máquinas de goiaba
+- **Luta 2D contra o Passarex**, estilo desenho antigo, com ataques de penas em padrões
+- **Depois da luta**: cidade destruída, leve o café de Naviraí pra polícia fazer o soro antes que ele acorde
+- Rádio Clubex FM (músicas do Suno na próxima atualização) e vozes novas
 
 ### v1.3 · 1491 e o Plantão no Clubex (23/11/2026)
 - **Nova fase: Registro 1491.** Um navio no oceano: o Douradex aponta ("É por ali, confia!"), o Colombo duvida, o Tonho te dá o leme. Siga o fiu fiu e descubra as Américas um ano antes de Colombo
