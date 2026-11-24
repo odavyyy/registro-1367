@@ -152,3 +152,10 @@ O jogo salva sozinho a cada lugar novo, pista e pena. Dá para **continuar** de 
 **Passarex, o Arquivo Passarex, os personagens e a lore pertencem a Os Bacanos ([@os_bacanos67](https://www.instagram.com/os_bacanos67/)).** Todos os direitos reservados. Projeto de fã, sem fins lucrativos.
 
 Feito por [oDavyy](https://www.instagram.com/odavyyy1/) com Claude Code. Veja também: [Passarex · Fiu Fiu, 1491](https://github.com/odavyyy/passarex) · [Elenco do Clubex](https://github.com/odavyyy/elenco-clubex)
+
+
+## Direitos, termos e privacidade
+
+Passarex, o Arquivo Passarex, o Clubex, os personagens e a história pertencem ao grupo Os Bacanos. **Este repositório não concede licença** para copiar, redistribuir ou reutilizar o jogo, os personagens, os textos ou as imagens; os materiais de terceiros seguem as licenças próprias (fontes em `fonts/`, sob SIL Open Font License 1.1).
+
+[Termos de Uso](https://odavyyy.github.io/registro-1367/termos/) · [Política de Privacidade](https://odavyyy.github.io/registro-1367/privacidade/) · [Avisos legais e licenças](https://odavyyy.github.io/registro-1367/avisos/) · [Contato e denúncias](https://odavyyy.github.io/registro-1367/contato/) · [Segurança](SECURITY.md)

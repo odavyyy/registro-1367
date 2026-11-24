@@ -1,5 +1,11 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
+  - name: "Denúncia, privacidade ou pedido de remoção (particular)"
+    url: "https://odavyyy.github.io/registro-1367/contato/"
+    about: "Não abra issue pública para isso. Veja os canais particulares na página de contato."
+  - name: "Falha de segurança (particular)"
+    url: "https://odavyyy.github.io/registro-1367/contato/#seguranca"
+    about: "Conte em particular antes de divulgar."
   - name: "Instagram do oDavyy"
     url: "https://www.instagram.com/odavyyy1/"
     about: "Também dá pra mandar o bug por DM."

@@ -5,7 +5,9 @@ labels: ["bug"]
 body:
   - type: markdown
     attributes:
-      value: "Valeu por ajudar! O jogo está em **alfa** e recebe atualização quase todo dia."
+      value: "Valeu por ajudar! O jogo está em **alfa** e recebe atualização quase todo dia.
+
+⚠ **Este formulário fica público.** Não coloque nome completo, telefone, endereço, escola ou outros dados pessoais (seus ou de outras pessoas). Denúncias e assuntos particulares: mande DM no Instagram @odavyyy1. [Termos de Uso](https://odavyyy.github.io/registro-1367/termos/) · [Privacidade](https://odavyyy.github.io/registro-1367/privacidade/)"
   - type: input
     id: onde
     attributes:

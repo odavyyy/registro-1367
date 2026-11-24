@@ -13,6 +13,8 @@
 <link rel="alternate" hreflang="en" href="https://odavyyy.github.io/registro-1367/en/">
 <link rel="alternate" hreflang="x-default" href="https://odavyyy.github.io/registro-1367/">
 <meta name="theme-color" content="#0d0a10">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self' 'unsafe-inline'; frame-src https://www.youtube-nocookie.com; base-uri 'self'; form-action 'none'">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:locale:alternate" content="en_US">
@@ -29,8 +31,7 @@
 <meta name="twitter:description" content="Jogo grátis de terror dreamcore no estilo PS1 e VHS. Ele não fala. Só assobia.">
 <meta name="twitter:image" content="https://odavyyy.github.io/registro-1367/imagens/capa.jpg">
 <script type="application/ld+json">[{"@context": "https://schema.org", "@type": "VideoGame", "name": "Registro 1367", "alternateName": ["Incident 1367", "Jogo do Passarex", "Passarex jogo", "Registro 1367 Passarex", "Arquivo Passarex jogo", "Jogo do Clubex"], "description": "Jogo grátis de terror dreamcore e analog horror em primeira pessoa, no estilo PS1 e fita VHS, inspirado no Passarex e no Clubex d'Os Bacanos. Joga direto no navegador, no PC e no celular.", "url": "https://odavyyy.github.io/registro-1367/", "image": "https://odavyyy.github.io/registro-1367/imagens/capa.jpg", "inLanguage": ["pt-BR", "en"], "genre": ["Terror", "Analog horror", "Dreamcore", "Aventura"], "gamePlatform": ["Navegador (PC)", "Navegador (celular)"], "applicationCategory": "Game", "operatingSystem": "Web", "author": {"@type": "Person", "name": "oDavyy", "url": "https://www.instagram.com/odavyyy1/"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL", "availability": "https://schema.org/InStock", "url": "https://odavyyy.itch.io/registro-1367"}, "sameAs": ["https://odavyyy.itch.io/registro-1367", "https://youtu.be/6tqPn_Aw5b8"], "trailer": {"@type": "VideoObject", "name": "Trailer do Registro 1367", "description": "Trailer do jogo de terror Registro 1367 (Passarex).", "thumbnailUrl": ["https://i.ytimg.com/vi/6tqPn_Aw5b8/hqdefault.jpg", "https://odavyyy.github.io/registro-1367/imagens/capa.jpg"], "uploadDate": "2026-11-23T12:00:00-04:00", "embedUrl": "https://www.youtube.com/embed/6tqPn_Aw5b8", "url": "https://youtu.be/6tqPn_Aw5b8"}, "keywords": "Passarex, Clubex, Os Bacanos, analog horror, dreamcore, PS1, VHS, Naviraí", "character": [{"@type": "Person", "name": "Passarex"}, {"@type": "Person", "name": "Douradex"}, {"@type": "Person", "name": "Homem-Distinto"}, {"@type": "Person", "name": "Acerolitos"}, {"@type": "Person", "name": "El Rosengo"}, {"@type": "Person", "name": "Orelha"}, {"@type": "Person", "name": "Magnific Cerolitos-Man"}], "playMode": "SinglePlayer", "gameLocation": "Naviraí, Mato Grosso do Sul"}, {"@context": "https://schema.org", "@type": "WebSite", "name": "Registro 1367", "alternateName": ["Incident 1367", "Jogo do Passarex"], "url": "https://odavyyy.github.io/registro-1367/", "inLanguage": ["pt-BR", "en"]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Onde jogar o jogo do Passarex?", "acceptedAnswer": {"@type": "Answer", "text": "O Registro 1367, o jogo do Passarex, é grátis e roda no navegador do PC e do celular: odavyyy.itch.io/registro-1367."}}, {"@type": "Question", "name": "O que é o Passarex?", "acceptedAnswer": {"@type": "Answer", "text": "O Passarex é o pássaro com cabeça de gente do Arquivo Passarex, d’Os Bacanos. Ele aparece parado ao longe em Naviraí e só assobia “fiu fiu”."}}, {"@type": "Question", "name": "O jogo tem o Clubex?", "acceptedAnswer": {"@type": "Answer", "text": "Tem. O elenco do Clubex aparece pelo jogo (Acerolitos, El Rosengo, Orelha, Serjão, Pássaro das Esferas) e o final é uma festa nos Portões do Clubex."}}, {"@type": "Question", "name": "O jogo está em inglês?", "acceptedAnswer": {"@type": "Answer", "text": "Sim. Em inglês ele se chama Incident 1367: as vozes ficam em português e tudo tem legenda em inglês."}}]}]</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=VT323&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fontes.css">
 <style>
   :root{--bg:#0d0a10;--paper:#16121b;--ink:#ece6d6;--dim:#a79fb0;--red:#ff5d4e;--gold:#ffd94a;--pink:#f2b6c4;--line:#2b2433}
   *{box-sizing:border-box}
@@ -131,7 +132,7 @@
 
   <section id="trailer">
     <h2>Trailer</h2>
-    <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6tqPn_Aw5b8" title="Trailer do Registro 1367" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video"><button id="tocaTrailer" style="position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000 url(imagens/capa.jpg) center/cover;color:#ffe9a8;font-family:VT323,monospace;font-size:clamp(22px,5vw,34px)" aria-label="Tocar o trailer (carrega o player do YouTube)"><span style="background:rgba(0,0,0,.72);padding:.25em .7em;border-radius:6px">▶ TOCAR O TRAILER<br><small style="font-size:.5em;font-family:Inter,system-ui,sans-serif">ao tocar, o vídeo carrega do YouTube</small></span></button></div>
     <p class="card" style="margin-top:14px;border-color:#ff8f6a">🚧 <b>O jogo está em ALFA</b> e recebe atualização quase todo dia. Achou um bug? <a href="https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml" target="_blank" rel="noopener"><b>Relate aqui</b></a> (não precisa saber programar, é só um formulário) que a gente corrige o mais rápido possível.</p>
     <p class="card" style="margin-top:14px">📼 A mais nova (v2.0) trouxe inventário com o espetão do Serjão, a academia Corpoleo Saudável, o memorial da Rosinha e os créditos com o tira-dúvidas. <a href="#atualizacoes">Ver todas as atualizações</a> · segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber da próxima.</p>
   </section>
@@ -318,7 +319,7 @@
         <li><b>Menu principal novo:</b> Continuar (mostra onde você parou), Novo jogo, Opções, Como jogar, Créditos e o trailer.</li>
         <li><b>Opções:</b> volume geral, volume da música, música do menu ligada ou desligada, legendas das vozes, sensibilidade da câmera e tela cheia. Elas ficam salvas no navegador.</li>
         <li><b>Pausa com botões:</b> Continuar, Opções e Menu principal.</li>
-        <li><b>Sons gravados pelo oDavyy:</b> o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora, que agora toca em loop o jogo inteiro.</li>
+        <li><b>Sons enviados pelo oDavyy:</b> o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora, que agora toca em loop o jogo inteiro.</li>
         <li>No celular, botões grandes para escolher as falas.</li>
         <li>Link do trailer no menu, na pausa e no fim.</li>
         <li>Correção: os textos tortos que apareciam no começo.</li>
@@ -375,7 +376,7 @@
       <li><b>O Passarex continua sendo o desenho da série.</b> Em vez de virar um boneco 3D diferente, o desenho 2D original vira uma figurinha recortada dentro do mundo 3D, sempre virada para você. Colorido nos lugares de sonho, em silhueta com os olhos acesos no escuro.</li>
       <li><b>Lugares de sonho.</b> A sala de casa de 1997, colinas em forma de mesa ligadas por uma crista (com um olho no lugar do sol), salas amarelas no estilo backrooms montadas como labirinto, uma sala de brincar com nuvens, mezanino, bolinhas que dá para chutar e arco-íris, e a avenida de Naviraí com uma escola e uma folhinha de verdade para pintar.</li>
       <li><b>Vozes geradas no próprio PC.</b> As falas foram geradas no VoiceStudio local. O Passarex tem voz mais aguda, de criança, passada por um filtro de rádio com engasgos, quedas de sinal e chiado. O narrador do “Arquivo” tem cara de fita velha.</li>
-      <li><b>Som feito na hora.</b> A caixinha de música desafinada, o zumbido das lâmpadas, o telefone, o vento, os passos e o “fiu fiu” são sintetizados pelo navegador enquanto você joga. Por cima, os sons gravados pelo próprio oDavyy: o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora.</li>
+      <li><b>Som feito na hora.</b> A caixinha de música desafinada, o zumbido das lâmpadas, o telefone, o vento, os passos e o “fiu fiu” são sintetizados pelo navegador enquanto você joga. Por cima, os sons enviados pelo próprio oDavyy: o “fiu fiu”, o grito dos sustos, a música do menu e a trilha sonora.</li>
       <li><b>Sustos e uma fuga leve.</b> Alguns quadros rápidos do rosto, falhas de tela com texto e uma fuga nas salas amarelas: ele vem atrás de você, mais devagar que você. Se te pegar, aparece “SINAL PERDIDO” e você volta de onde a fuga começou.</li>
       <li><b>Nunca fica perdido.</b> O botão de dica mostra o que fazer e solta um passarinho amarelo que voa mostrando o caminho e espera por você.</li>
       <li><b>Celular e publicação.</b> Joystick na tela, arrastar para olhar, botões grandes e tela cheia na horizontal. O jogo inteiro tem uns 9 MB e foi publicado no itch.io.</li>
@@ -423,9 +424,11 @@
   </section>
 
   <a class="playbar" href="https://odavyyy.itch.io/registro-1367">▶ JOGAR GRÁTIS</a>
-  <footer class="vhs">■ FIM DO REGISTRO · AUTENTICIDADE NÃO CONFIRMADA</footer>
+  <footer class="vhs"><nav class="rodape-legal" style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;font-family:Inter,system-ui,sans-serif;font-size:14px;margin-bottom:8px"><a href="termos/">Termos de Uso</a><a href="privacidade/">Privacidade</a><a href="avisos/">Avisos legais e licenças</a><a href="contato/">Contato e denúncias</a><a href="en/legal/">English</a></nav>■ FIM DO REGISTRO · AUTENTICIDADE NÃO CONFIRMADA</footer>
 </div>
 <script>
+  // trailer: o player do YouTube só é carregado quando a pessoa clica
+  (() => { const b = document.getElementById('tocaTrailer'); if (!b) return; b.addEventListener('click', () => { const f = document.createElement('iframe'); f.src = 'https://www.youtube-nocookie.com/embed/6tqPn_Aw5b8?autoplay=1'; f.title = 'Trailer do Registro 1367'; f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen'; f.allowFullscreen = true; b.replaceWith(f); }); })();
   // no celular, o botão JOGAR fica fixo embaixo depois que os botões do topo saem da tela
   (() => {
     const bar = document.querySelector('.playbar'), btn = document.getElementById('jogar');
