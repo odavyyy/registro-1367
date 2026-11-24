@@ -11,9 +11,33 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 > 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
 >
-> 📼 A mais nova (v2.0) trouxe inventário, a academia Corpoleo Saudável, o memorial da Rosinha e os créditos com tira-dúvidas. Veja a lista em [Atualizações](#atualizações).
+> 📼 As mais novas: **v2.5** escondeu um final secreto no jogo, e a **v2.6** corrigiu um monte de bugs e deixou as lutas mais justas. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.6 · Correções e jogo mais justo (24/11/2026)
+- Câmera: agora só o **V** troca (o F5 saiu).
+- **Inventário pelo teclado**: TAB ou I abre e fecha, as setas escolhem, Enter usa.
+- **Comer o espeto igual no Minecraft**: com ele na mão, segure o clique esquerdo.
+- **F sai dos minijogos** (fliperama da Ratabrumga e plantão do Clubex).
+- Teclas do **Orelha** escritas na tela: [C] chama, [1] [2] [3] trocam a marcha, [E] desce.
+- **Lutas mais fáceis**: mais vida pra você, menos pro chefe e mais tempo entre os ataques. A segunda luta ficou bem mais justa.
+- Textos e placas muito mais legíveis (lojas, placa de Naviraí, escola, “Só entra quem tem aura”).
+- A avenida não acaba mais no vazio atrás de você: lojas novas e um cavalete de OBRAS.
+- Na chegada do navio, um bando de Passarex pulando na praia, esperando.
+- O Passarex em cima da catedral agora aparece de verdade, e o sino toca mais vezes e mais alto.
+- **Corrigido**: escada do navio ao contrário, telhado torto da casa, TVs da locadora fora da parede, moedas 67 deitadas, boneco torto no supino, placas tortas nos pedestais do Clubex, Douradex com dois desenhos diferentes, menu de Opções maior que a tela e o texto do objetivo por cima dos menus.
+
+### v2.5 · O final secreto (24/11/2026)
+- **Um final secreto** 🤫 Ninguém vai te contar onde fica. Dica: quando o Passarex cai, nem tudo precisa ser café.
+- **Uma luta nova**, com mecânicas próprias (luneta, rede, barris, maré...). Quem é o chefe? Descubra.
+- **IA do Passarex mais esperta**: não dá mais pra ficar escondido atrás dele.
+- **Catedral refeita** igual à de Naviraí.
+- **Músicas em 8 bits**, mais leves, e a música nova da luta: “Derrote o Pássaro”.
+- Um alienígena numa bolha na floresta: “Zuprum zuprum carambufa bibilulú”.
+- Três conquistas novas, uma delas bem escondida.
+- **Corrigido**: no itch.io, abrir uma fase em CAPÍTULOS dava erro 404.
+- Termos de Uso, Privacidade e Avisos; aviso de sustos e luzes piscando na tela inicial; botão pra apagar os seus dados do jogo em Opções.
 
 ### v2.4 · A festa nos Portões (23/11/2026)
 - No final, todo mundo na festa: Clubex, Arquivo Passarex, o novo Magnific Cerolitos-Man e os Bacanos (Davy, Luis e Gustavo)
