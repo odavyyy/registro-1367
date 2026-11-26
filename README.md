@@ -11,9 +11,17 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 > 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
 >
-> 📼 As mais novas: **v2.5** escondeu um final secreto no jogo, e a **v2.6** corrigiu um monte de bugs e deixou as lutas mais justas. Veja a lista em [Atualizações](#atualizações).
+> 📼 A mais nova: a **v2.7** (feita com o Gustavo) deu um visual novo ao Passarex, trouxe de volta o Douradex de antes e colocou áudios novos. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.7 · Melhorias e correções, por Gustavo (26/11/2026)
+- **Passarex com visual novo**: o desenho de referência do Gustavo virou o Passarex oficial do jogo inteiro. Ele aparece nas fases, na luta, nos sustos, nas skins, nos Portões, na capa e no site.
+- **O Douradex de antes voltou** (o dourado, de óculos e corrente), e agora é o mesmo no navio, nos Portões e nas skins.
+- Áudio novo nos **Portões do Clubex**: ao chegar, “O Clubex me chamou, estou indo Clubex.”
+- Toda vez que o **Pássaro das Esferas** concede um pedido: “PÁSSARO!”
+- Lutas: sumiu o quadrado branco que aparecia quando o chefe levava dano. Agora ele mesmo pisca em branco a cada acerto.
+- Site com visual novo, com o Passarex animado no fundo.
 
 ### v2.6 · Correções e jogo mais justo (24/11/2026)
 - Câmera: agora só o **V** troca (o F5 saiu).
