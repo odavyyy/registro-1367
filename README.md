@@ -15,6 +15,9 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.8.1 · Imagem mais limpa (27/11/2026)
+- O efeito de **fita VHS** no jogo ficou cerca de 15% mais fraco: dá pra enxergar melhor, com a mesma cara de fita. Os sustos continuam iguais.
+
 ### v2.8 · TED chegou, o navio voltou (27/11/2026)
 - **TED**, o cachorro do Kaiky e ser lendário do Clubex, está sentado na frente da igreja. Fale com ele pra desbloquear: vira montaria (como o Orelha) e fica salvo. **T** (ou TROCAR no celular) alterna entre os dois. Ele também está nos Portões.
 - Corrigido: a fase do **navio** ficava branca e travada. Erro nosso da versão anterior.
