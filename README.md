@@ -11,9 +11,15 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 > 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
 >
-> 📼 A mais nova: a **v2.7** (feita com o Gustavo) deu um visual novo ao Passarex, trouxe de volta o Douradex de antes e colocou áudios novos. Veja a lista em [Atualizações](#atualizações).
+> 📼 A mais nova: a **v2.8** trouxe o **TED** como montaria, consertou a fase do navio e arrumou o menu de Capítulos no celular. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.8 · TED chegou, o navio voltou (27/11/2026)
+- **TED**, o cachorro do Kaiky e ser lendário do Clubex, está sentado na frente da igreja. Fale com ele pra desbloquear: vira montaria (como o Orelha) e fica salvo. **T** (ou TROCAR no celular) alterna entre os dois. Ele também está nos Portões.
+- Corrigido: a fase do **navio** ficava branca e travada. Erro nosso da versão anterior.
+- Lutas rebalanceadas: o especial não devolve mais carta (ele quase se pagava sozinho), e a goiaba azeda ficou um pouco mais fraca.
+- Menu de **Capítulos** arrumado no celular: nenhum capítulo fica mais cortado e a lista rola com o dedo.
 
 ### v2.7 · Melhorias e correções, por Gustavo (26/11/2026)
 - **Passarex com visual novo**: o desenho de referência do Gustavo virou o Passarex oficial do jogo inteiro. Ele aparece nas fases, na luta, nos sustos, nas skins, nos Portões, na capa e no site.
