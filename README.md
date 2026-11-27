@@ -11,9 +11,19 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 > 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
 >
-> 📼 A mais nova: a **v2.8** trouxe o **TED** como montaria, consertou a fase do navio e arrumou o menu de Capítulos no celular. Veja a lista em [Atualizações](#atualizações).
+> 📼 A mais nova: a **v2.9** trouxe uma **história nova**: Matagalé, a árvore do Passarex, a chefe **RataBrumga** e o resgate do Serjão. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.9 · O resgate do Serjão (27/11/2026)
+- **História nova antes da luta final**: Depois das goiabas, o Mago e o Macaco contam que o Passarex sequestrou o **Serjão dos Espetos**. A luta na praça só abre depois do resgate.
+- **Matagalé**: Fase de investigação em Acerolândia: converse com os Acerolitos, ache os rastros e ajude o **El Rosengo**, que empresta o boné.
+- **O boné do Rosengo**: Aperte **Q** (no celular, o botão 🧢) pra trocar de lado: paredes somem, outras aparecem e surgem pontes. Mas o Passarex percebe.
+- **A árvore do Passarex**: Terror com furtividade: ele ronda, escuta, persegue e procura. Esconda-se nas raízes e nos troncos ocos e resolva os puzzles.
+- **Chefe nova: RataBrumga**: Ela entra na terra (a rachadura com “!” avisa onde vai sair), arremessa queijos e tem três fases. Suas máquinas de goiaba vão junto.
+- **A fuga**: Saia correndo com o Serjão, que só aguenta um golpe. Ele avisa quando o Passarex está chegando.
+- **Recompensa**: **Espetinhos infinitos do Serjão**, pra sempre no inventário.
+- **Capítulos**: Dois capítulos novos no menu. Quem já tinha passado desse ponto pode jogar a história nova por eles.
 
 ### v2.8.1 · Imagem mais limpa (27/11/2026)
 - O efeito de **fita VHS** no jogo ficou cerca de 15% mais fraco: dá pra enxergar melhor, com a mesma cara de fita. Os sustos continuam iguais.
