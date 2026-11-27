@@ -15,6 +15,10 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 ## Atualizações
 
+### v2.9.1 · Fuga consertada e lanterna (27/11/2026)
+- **Corrigido**: na **fuga** com o Serjão, morrer parecia travar o jogo (no celular o botão de tentar de novo não aparecia; no PC o clique não funcionava). Agora é tocar ou clicar pra recomeçar.
+- **Lanterna**: na árvore do Passarex, uma luz fraca acompanha pra onde você olha.
+
 ### v2.9 · O resgate do Serjão (27/11/2026)
 - **História nova antes da luta final**: Depois das goiabas, o Mago e o Macaco contam que o Passarex sequestrou o **Serjão dos Espetos**. A luta na praça só abre depois do resgate.
 - **Matagalé**: Fase de investigação em Acerolândia: converse com os Acerolitos, ache os rastros e ajude o **El Rosengo**, que empresta o boné.
