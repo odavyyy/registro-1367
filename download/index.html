@@ -330,6 +330,7 @@
 <script type="module" src="main.js"></script>
 <script>
 (() => {
+  if (window.top !== window) return;   // dentro da janela do site: sem aviso e sem guardar pra offline
   const instalado = matchMedia('(display-mode: standalone),(display-mode: fullscreen)').matches || navigator.standalone === true;
   const ios = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   const en = () => document.documentElement.lang.startsWith('en');

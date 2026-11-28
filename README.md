@@ -3,7 +3,7 @@
 Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita VHS. *Ele não fala. Só assobia.*
 
 🔗 **Página:** https://odavyyy.github.io/registro-1367/
-▶️ **Jogar:** https://odavyyy.itch.io/registro-1367
+▶️ **Jogar (no site):** https://odavyyy.github.io/registro-1367/#jogo
 ⬇️ **Download (celular e PC, joga sem internet):** https://odavyyy.github.io/registro-1367/download/
 🎬 **Trailer:** https://youtu.be/6tqPn_Aw5b8
 📸 **Instagram:** https://www.instagram.com/odavyyy1/
@@ -15,6 +15,9 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 > 📼 A mais nova: a **v2.9** trouxe uma **história nova**: Matagalé, a árvore do Passarex, a chefe **RataBrumga** e o resgate do Serjão. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### Jogue aqui no site (28/11/2026)
+- Agora dá pra **jogar numa janela no próprio site**, com tela cheia (no celular, página inteira). O progresso salvo no itch.io não passa pro site.
 
 ### Download · jogue sem internet (28/11/2026)
 - **Versão de download**: instala no celular ou no PC e funciona sem internet (só a rádio precisa de rede). No iPhone: Safari › Compartilhar › Adicionar à Tela de Início. O progresso é separado do itch.io.
