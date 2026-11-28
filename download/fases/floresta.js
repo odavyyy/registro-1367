@@ -1,11 +1,13 @@
 // FASE 8 · A floresta de cogumelos. Igual ao curta em stop motion: o Mago, o Macaco, o Pássaro das Esferas
 // (que só concede se você pedir) e o Pássaro Cocô. Aqui se monta as máquinas de goiaba para a luta.
+import { kit } from './mundo.js';
+
 export function build(E, L) {
   const { THREE } = E, S = E.state, rnd = E.rnd;
   E.seed(1025);
   const Q = S.flags.centro = S.flags.centro || { st: 0, found: {} };
-  E.scene.background = new THREE.Color(0x1a1230);
-  E.scene.fog = new THREE.FogExp2(0x2a1a40, .05);
+  E.scene.background = new THREE.Color(0x1a1450);
+  E.scene.fog = new THREE.FogExp2(0x38268c, .017);
   E.camera.far = 90;
   L.floor = 'grass'; L.speed = 2.1; L.eye = 1.6; L.reach = 2.4;
   E.osd('▶ PLAY', 'FLORESTA DE COGUMELOS · ??:??');
@@ -13,45 +15,147 @@ export function build(E, L) {
   const { lam, basic, box } = E;
   const C = { talking: false, said: {} };
   const R = 15;
-  L.walkable = (x, z) => Math.hypot(x, z) < R - .4 || (Math.abs(x) < 1.6 && z > 0 && z < R + 5) || (Q.mata >= 1 && Math.abs(x) < 1.5 && z < 0 && z > -R - 5);
+  const talos = [0, 1, 2, 3, 4].flatMap(i => [[-1.95, -R + .2 - i * 1.25], [1.95, -R + .2 - i * 1.25]]);
+  const barrado = (x, z) => (Q.mata >= 1 ? talos.some(([a, b]) => Math.hypot(x - a, z - b) < .42) : Math.abs(x) < 3.3 && z < -R + .3 && z > -R - 2.4);   // o mato fechado (ou os talos do corredor)
+  L.walkable = (x, z) => (Math.hypot(x, z) < R + 5.5 && !barrado(x, z)) || (x > 12 && x < 22 && Math.abs(z + 1.5) < 1.2) || Math.hypot(x - 23.6, z + 1.5) < 2.7 || (Math.abs(x) < 1.6 && z > 0 && z < R + 5) || (Q.mata >= 1 && Math.abs(x) < 1.5 && z < 0 && z > -R - 5);
   L.spawn = S.prevId === 'matagale' ? { x: 0, z: -R - 2.6, yaw: Math.PI } : { x: 0, z: R + 3.5, yaw: 0 };
 
-  /* chão de musgo, cogumelos gigantes, vagalumes */
-  const moss = E.canvasTex(32, 32, (g, w, h) => { g.fillStyle = '#2e4a2a'; g.fillRect(0, 0, w, h); E.speckle(g, w, h, 300, ['#26402a', '#3a5a32', '#4a6a3a', '#5a3a6a']); }, [14, 14]);
-  const gr = E.add(new THREE.Mesh(new THREE.CircleGeometry(R + 12, 20), lam({ map: moss }))); gr.rotation.x = -Math.PI / 2;
-  const trail = E.add(new THREE.Mesh(new THREE.PlaneGeometry(2.6, 8), lam({ color: 0x6a5238 }))); trail.rotation.x = -Math.PI / 2; trail.position.set(0, .04, R + 1.5);
-  E.add(new THREE.HemisphereLight(0x9a8ad8, 0x1a2a1a, 1.6));
-  const moon = E.add(new THREE.DirectionalLight(0xc8c0ff, .7)); moon.position.set(-10, 20, -6);
-  const capT = (c1, c2) => E.canvasTex(32, 16, (g, w, h) => { g.fillStyle = c1; g.fillRect(0, 0, w, h); g.fillStyle = c2; for (let i = 0; i < 9; i++) { g.beginPath(); g.arc((i * 11) % 30 + 1, (i * 7) % 12 + 2, 1.6 + (i % 3) * .6, 0, 7); g.fill(); } }, [3, 1]);
-  const caps = [capT('#c8302c', '#fff2e6'), capT('#8a4ab0', '#f2c8ff'), capT('#e88a2a', '#fff6d0'), capT('#3a8ac8', '#d8f0ff')];
-  const stemM = lam({ color: 0xece2c8 });
-  function cogumelo(x, z, s, k) {
-    const st = E.add(new THREE.Mesh(new THREE.CylinderGeometry(.25 * s, .35 * s, 2 * s, 7), stemM)); st.position.set(x, s, z);
-    const cap = E.add(new THREE.Mesh(new THREE.SphereGeometry(1.2 * s, 10, 6, 0, Math.PI * 2, 0, Math.PI / 2), lam({ map: caps[k % 4], side: THREE.DoubleSide }))); cap.position.set(x, 2 * s - .1 * s, z); cap.scale.y = .7;
-    if (s > .6) E.circle(x, z, .4 * s);
-    return cap;
+  /* ---------- o cenário: um planalto de cogumelos no alto de um penhasco, com vista pro vale, pro castelo e pros dragões ---------- */
+  const Z = kit(E, L);
+  const longe = E.add(new THREE.Group());   // céu, lua e serras: acompanham o jogador (parecem infinitos)
+  longe.add(Z.ceu({
+    grad: [[1, '#070626'], [.55, '#1a1460'], [.25, '#3a2494'], [.07, '#7a3cb0'], [-.02, '#c25aa8'], [-.18, '#2a2470'], [-1, '#0a0a24']],
+    nuvens: { cor: '#4a2ab4', cor2: '#c48cff', de: .47, ate: .74, escala: 2.2, torce: .9, forca: .85, alt0: .0, alt1: .62 },
+    estrelas: 900, espiral: { az: Math.PI + .28, el: .62, raio: .62, cor: '#bfe4ff', cor2: '#5a52e0', bracos: 3, torce: 8 },
+    clarao: [{ az: Math.PI - .15, el: .05, raio: .9, cor: '#ff7ab0', forca: .75 }, { az: Math.PI / 2, el: .02, raio: .7, cor: '#4ae0d0', forca: .4 }],
+  }));
+  Z.lua(longe, { az: Math.PI - .27, el: .31, tam: 8.5, cor: '#f2f0ff', sombra: '#8c92d8', halo: '#8a7cff' });
+  Z.serra(longe, { raio: 78, base: -22, alt: 20, pico: 17, cor: '#2a2276', bruma: '#7a46ac', freq: 4.2, seed: 2 });
+  Z.serra(longe, { raio: 70, base: -24, alt: 17, pico: 12, cor: '#141248', bruma: '#43308c', freq: 6, seed: 5 });
+  E.add(new THREE.HemisphereLight(0xb4a6ff, 0x1e3c34, 1.9));
+  const moon = E.add(new THREE.DirectionalLight(0xa8bcff, 1.25)); moon.position.set(10, 16, -18);
+  const rosa = E.add(new THREE.DirectionalLight(0xff8ac0, .35)); rosa.position.set(-14, 6, -10);
+
+  // o planalto e o paredão
+  const BORDA = R + 6.6;
+  const moss = E.canvasTex(64, 64, (g, w, h) => { g.fillStyle = '#1f4a3a'; g.fillRect(0, 0, w, h); E.speckle(g, w, h, 1100, ['#173c32', '#2a5e42', '#38704a', '#3a3a78', '#245046']); }, [11, 11]);
+  const gr = E.add(new THREE.Mesh(new THREE.CircleGeometry(BORDA, 40), lam({ map: moss }))); gr.rotation.x = -Math.PI / 2;
+  const pedraM = Z.solido('#2c2a5e', { emissive: new THREE.Color('#0e0c2a') });
+  const pared = Z.malha(L.group, new THREE.CylinderGeometry(BORDA, BORDA - 4, 12, 40, 3, true), pedraM, 0, -6.02, 0);
+  { const p = pared.geometry.attributes.position; for (let i = 0; i < p.count; i++) { const y = p.getY(i); if (y > 5.9) continue; const x = p.getX(i), z = p.getZ(i), k = 1 + (Z.ruido(x * .5, y * .6, z * .5) - .5) * .22; p.setXYZ(i, x * k, y, z * k); } pared.geometry.computeVertexNormals(); }
+  const naVista = a => { const d = x => Math.abs(Math.atan2(Math.sin(a - x), Math.cos(a - x))); return d(Math.PI) < .98 || d(Math.PI / 2) < .42; };
+  // mureta natural de pedras na beirada
+  Z.copias(L.group, Z.rocha(1, .4, 0), Z.solido('#3a3878', { emissive: new THREE.Color('#121038') }), 90, (o, i) => { const a = i / 90 * Math.PI * 2, r = BORDA - .35 + (Z.R() - .5) * .5; if (Math.abs(Math.sin(a)) * r < 2.4 || (Math.sin(a) > 0 && Math.abs(Math.cos(a) * r + 1.5) < 2.2)) { o.scale.setScalar(0); return; } o.position.set(Math.sin(a) * r, .05, Math.cos(a) * r); o.rotation.set(Z.R() * 3, Z.R() * 3, 0); o.scale.set(.35 + Z.R() * .5, .25 + Z.R() * (naVista(a) ? .22 : .8), .35 + Z.R() * .5); });
+
+  // o vale lá embaixo: mata, rio que brilha, lago e a vila com as janelas acesas
+  const VY = -9.5;
+  const valeT = Z.tela(64, 64, g => { g.fillStyle = '#14234e'; g.fillRect(0, 0, 64, 64); Z.manchas(g, 64, 64, 420, ['#0f1c40', '#1c3466', '#20426a', '#241a58'], 1, 4); }, { nitido: true, rep: [16, 16] });
+  Z.malha(L.group, new THREE.CircleGeometry(80, 40), new THREE.MeshLambertMaterial({ map: valeT, emissive: new THREE.Color('#121c4c') }), 0, VY, 0).rotation.x = -Math.PI / 2;
+  const aguaT = Z.rachado('#1c4a9a', '#8ae8ff', 22); aguaT.wrapS = aguaT.wrapT = THREE.RepeatWrapping;
+  Z.estrada(L.group, [[70, 22], [52, 8], [42, -10], [28, -24], [20, -40], [2, -48], [-8, -62], [-6, -74]], 4.4, aguaT, { y: VY + .08, brilha: true, fog: false });
+  Z.malha(L.group, new THREE.CircleGeometry(11, 24), Z.luz({ map: aguaT, color: '#9aa8ff' }), 20, VY + .06, -42).rotation.x = -Math.PI / 2;
+  Z.pinheiros(L.group, 260, () => { const a = Z.R() * Math.PI * 2, r = BORDA + 2 + Z.R() * 40, x = Math.sin(a) * r, z = Math.cos(a) * r; return [x, Math.hypot(x - 36, z + 2) < 15 ? VY - 9 : VY, z]; }, '#101c46', 2.7);
+  [[35, -5], [39, 1], [33.5, 4.5], [41, -11], [45, -3], [37, 11], [31, -13], [47, 8]].forEach(([x, z], i) => { const c = Z.casinha(L.group, x, z, { rotY: i * 1.7, y: VY, w: 2.6 + (i % 3) * .5, h: 2 + (i % 2) * .8, reboco: i % 2 ? '#6a5a8a' : '#7a6a72', telha: i % 3 ? '#38307a' : '#7a2a4a', telha2: i % 3 ? '#5048a0' : '#a03a5a', torta: i % 2 ? .08 : -.07 }); c.scale.setScalar(1.25); Z.brilho(L.group, '#ffa838', 3.4, x - 1.2, VY + 2, z + (i % 2 ? 1 : -1), .55); });
+  Z.copias(L.group, new THREE.OctahedronGeometry(.16, 0), Z.luz('#ffc860'), 90, o => { const a = Z.R() * 6.28, r = Z.R() * 13; o.position.set(37 + Math.sin(a) * r, VY + .3 + Z.R() * .5, -1 + Math.cos(a) * r); });
+  Z.brilho(L.group, '#ff9a48', 26, 38, VY + 1, -1, .28);
+  { const torre = [40, 3]; Z.malha(L.group, new THREE.CylinderGeometry(1.1, 1.4, 9, 8), Z.solido('#3a3874', { emissive: new THREE.Color('#141240'), fog: false }), torre[0], VY + 4.5, torre[1]); Z.malha(L.group, new THREE.ConeGeometry(1.6, 3.4, 8), Z.solido('#5a2a6a', { emissive: new THREE.Color('#200c30'), fog: false }), torre[0], VY + 10.6, torre[1]); Z.brilho(L.group, '#ffb040', 3.6, torre[0] - 1.4, VY + 7.4, torre[1], .8); }
+
+  // o castelo no pico e os picos de pedra
+  Z.castelo(L.group, { x: -22, y: 1.2, z: -45, s: 1.18, pedra: '#2a2c78', pedra2: '#3c3e98', telhado: '#171448' }).rotation.y = .42;
+  Z.brilho(L.group, '#7a68ff', 34, -23, 8, -50, .34);
+  const picoM = Z.solido('#241f5c', { emissive: new THREE.Color('#171244'), fog: false });
+  for (const [x, z, a, r] of [[-38, -26, 13, 5], [-8, -62, 9, 4], [36, -38, 17, 5.5], [48, -22, 11, 4], [-46, 6, 12, 5], [-34, 32, 9, 5], [44, 30, 10, 4.5]]) {
+    Z.malha(L.group, new THREE.ConeGeometry(r, a - VY, 7, 3), picoM, x, VY + (a - VY) / 2, z).rotation.y = x;
+    Z.malha(L.group, Z.rocha(r * .5, .45, 1), picoM, x + r * .35, VY + (a - VY) * .42, z + r * .2);
   }
-  for (let i = 0; i < 26; i++) { const a = i / 26 * Math.PI * 2 + rnd() * .2, r = R + 1 + rnd() * 7; if (Math.abs(Math.sin(a)) < .25) continue; cogumelo(Math.sin(a) * r, Math.cos(a) * r, 1.6 + rnd() * 2.2, i); }
-  for (let i = 0; i < 9; i++) { const a = rnd() * 6.28, r = 5 + rnd() * 8; cogumelo(Math.sin(a) * r, Math.cos(a) * r, .35 + rnd() * .5, i); }
+
+  // o mirante: uma ponte de pedra que avança sobre o vale, com o parapeito baixo e uma lanterna
+  {
+    const lajeT = Z.pedrinhas('#2a2450', ['#6a5a86', '#7a6a96', '#584a74']);
+    Z.estrada(L.group, [[12.5, -1.5], [22.5, -1.5]], 2.6, lajeT, { y: .045 });
+    const sacada = Z.malha(L.group, new THREE.CylinderGeometry(3, 2.2, 1.2, 14), pedraM, 23.6, -.6, -1.5); void sacada;
+    const laje = Z.malha(L.group, new THREE.CircleGeometry(3, 14), lam({ map: lajeT }), 23.6, .05, -1.5); laje.rotation.x = -Math.PI / 2;
+    Z.malha(L.group, new THREE.CylinderGeometry(1.1, .5, 9.5, 7), pedraM, 23.4, -5.8, -1.5);
+    for (let i = -6; i <= 6; i++) { const a = Math.PI / 2 + i * .34; Z.malha(L.group, new THREE.BoxGeometry(.24, .34, .24), pedraM, 23.6 + Math.sin(a) * 2.9, .17, -1.5 + Math.cos(a) * 2.9); }
+    for (const z of [-2.9, -.1]) for (let x = 15; x <= 21.4; x += 1.6) Z.malha(L.group, new THREE.BoxGeometry(.22, .32, .22), pedraM, x, .16, z);
+    Z.malha(L.group, new THREE.BoxGeometry(.12, 2, .12), Z.solido('#1a1230'), 21.2, 1, -3);
+    Z.malha(L.group, new THREE.OctahedronGeometry(.24, 0), Z.luz('#ffd060'), 21.2, 2.15, -3); Z.brilho(L.group, '#ffb040', 2.6, 21.2, 2.15, -3, .8);
+    E.interact(E.hitbox(1.4, 1.2, 2.4, 26.2, .7, -1.5), { label: () => S.dlg ? '' : '[E] Olhar a vista', act: () => E.conversa([['VOCÊ', '(O vale inteiro. Um rio que brilha, uma vila com as luzes acesas e, lá no alto, o castelo.)'], ['VOCÊ', '(Os dragões nem ligam pra você. Ainda bem.)']]) });
+  }
+
+  // dragões: um pousado na pedra do lado do castelo, dois rondando a torre e um grande que passa por cima da floresta
+  const agulha = [15.5, -27];
+  Z.malha(L.group, new THREE.CylinderGeometry(2.3, 4.6, 12.4, 7, 3), pedraM, agulha[0], -3.9, agulha[1]);
+  Z.malha(L.group, Z.rocha(2.9, .3, 1), pedraM, agulha[0], 1.5, agulha[1]).scale.y = .55;
+  const guardiao = Z.dragao(L.group, { s: 1.65, cor: '#35309a', barriga: '#b06ac0', asa: '#7a2a9a', olho: '#ffd23a' });
+  guardiao.position.set(agulha[0], 4.55, agulha[1]); guardiao.rotation.y = Math.atan2(-agulha[0], 10 - agulha[1]);
+  const soprar = Z.fogo(L.group, v => guardiao.userData.cabeca.localToWorld(v.set(0, -.08, 1.15)), v => guardiao.userData.cabeca.getWorldDirection(v));
+  let proxSopro = 9, abrindo = 0;
+  const olharD = new THREE.Vector3();
+  Z.anima((dt, t) => {
+    guardiao.userData.pose(t, 'pousado');
+    // a cabeça acompanha você
+    olharD.copy(E.camera.position); guardiao.worldToLocal(olharD);
+    guardiao.userData.pescoco.rotation.y += (Math.max(-.7, Math.min(.7, Math.atan2(olharD.x, olharD.z))) - guardiao.userData.pescoco.rotation.y) * Math.min(1, dt * 1.2);
+    proxSopro -= dt;
+    if (proxSopro <= 0) { proxSopro = 17 + Z.R() * 12; abrindo = 2.4; Z.somDragao('rugido', 1, guardiao.position); E.later(.55, () => { soprar(1.7); Z.somDragao('fogo', .9, guardiao.position); }); }
+    abrindo = Math.max(0, abrindo - dt); guardiao.userData.boca = Math.min(1, abrindo * 1.6);
+    guardiao.userData.pescoco.rotation.x = -Math.min(1, abrindo) * .28;
+  });
+  Z.voa(Z.dragao(L.group, { s: 1.05, cor: '#1c6a8a', barriga: '#6ad0c0', asa: '#25488a', olho: '#c8ff6a' }), { cx: -21, cz: -44, y: 20, r: 16, vel: .21, fase: 1.4 });
+  Z.voa(Z.dragao(L.group, { s: .75, cor: '#6a2a7a', barriga: '#e08ab0', asa: '#a03a7a' }), { cx: -16, cz: -42, y: 14, r: 21, vel: -.16, fase: 4 });
+  const grandao = Z.voa(Z.dragao(L.group, { s: 2.1, cor: '#7a2440', barriga: '#f0a040', asa: '#b03030', olho: '#fff07a' }), { cx: 0, cz: -2, y: 15.5, r: 31, rz: 27, vel: .13, fase: 2.35, plana: .6 });
+  [0, 1, 2, 3].forEach(i => Z.voa(Z.revoada(L.group, { s: .24 }), { cx: 28 + i * 1.4, cz: -48 - i * 1.1, y: 17 + (i % 2) * 1.6, r: 13, vel: .17, fase: i * .17, plana: 0 }));
+  let passou = 99;   // quando o grandão passa por perto, ele ruge baixinho
+  Z.anima(dt => { passou += dt; if (passou > 24 && grandao.position.distanceTo(E.camera.position) < 31) { passou = 0; Z.somDragao('guincho', .9, grandao.position); } });
+
+  // a floresta: cogumelos gigantes em volta (abertos onde tem vista), árvores retorcidas, flores que brilham
+  const coresC = ['#c8302c', '#8a3ac8', '#e87a2a', '#2a7ad8', '#c83a8a'];
+  const stemM = lam({ color: 0xd8d0e8, emissive: 0x1a1428 });
+  const gigante = (x, z, s, k) => { Z.cogumelo(L.group, x, z, s, coresC[k % 5]); if (s > .55 && Math.hypot(x, z) < R + 6) E.circle(x, z, .37 * s); };
+  for (let i = 0; i < 40; i++) {
+    const a = i / 40 * Math.PI * 2 + rnd() * .1, r = R + 1.2 + rnd() * 3.8;
+    if (Math.abs(Math.sin(a)) < .22) continue;
+    if (naVista(a)) { if (i % 3 === 0) gigante(Math.sin(a) * (R + 2 + (i % 2) * 2.4), Math.cos(a) * (R + 2 + (i % 2) * 2.4), .35 + rnd() * .3, i); continue; }
+    gigante(Math.sin(a) * r, Math.cos(a) * r, 1.5 + rnd() * 2, i);
+  }
+  // os dois gigantes que emolduram a entrada
+  gigante(-5.2, 17.6, 2.7, 1); gigante(5.4, 18.2, 2.2, 3);
+  for (let i = 0; i < 9; i++) { const a = rnd() * 6.28, r = 5 + rnd() * 8; gigante(Math.sin(a) * r, Math.cos(a) * r, .35 + rnd() * .5, i); }
+  const troncoM = lam({ color: 0x2a1c3a, emissive: 0x0c0818 });
+  for (const [x, z, s] of [[-17.8, 8.6, 1.5], [-19.6, -11.5, 1.8], [18.4, 10.5, 1.4], [19.2, -8.6, 1.1], [-11.5, 16.4, 1.2], [12.6, 15.6, 1.35]]) { Z.galhada(L.group, x, z, s, troncoM); E.circle(x, z, .3 * s); }
+  // as casinhas tortas do Mago e do Macaco, na beirada do planalto
+  Z.casinha(L.group, -18.2, .6, { rotY: Math.PI / 2 + .12, w: 4.2, h: 2.9, d: 3.2, reboco: '#8a76a8', telha: '#1c6a70', telha2: '#2a9a92', torta: .09 });
+  Z.casinha(L.group, -16.6, -7.6, { rotY: 1.02, w: 2.6, h: 2, d: 2.2, reboco: '#9a7a62', telha: '#7a2a5a', telha2: '#a83a72', torta: -.1 });
+  Z.cogumelo(L.group, -19.4, 4.4, 2.3, '#c83a8a'); E.circle(-19.4, 4.4, .85);
+  for (const [x, z, r] of [[-18.2, -.7, 1.7], [-18.2, .6, 1.7], [-18.2, 1.9, 1.7], [-16.6, -7.6, 1.35]]) E.circle(x, z, r);   // as duas casinhas
+  const longeDaTrilha = (x, z) => !(Math.abs(x) < 1.7 && (z > 1 || z < -R + 1));
+  const touceiras = [...Array(34)].map((_, i) => { const a = i / 34 * 6.28 + rnd() * .3, r = i % 3 ? R - 1.2 + rnd() * 6 : 5 + rnd() * 9; return [Math.sin(a) * r, Math.cos(a) * r]; }).filter(([x, z]) => longeDaTrilha(x, z));
+  Z.flores(L.group, 520, i => { const [cx, cz] = touceiras[i % touceiras.length], x = cx + (Z.R() - .5) * 1.7, z = cz + (Z.R() - .5) * 1.7; return longeDaTrilha(x, z) ? [x, .08 + Z.R() * .22, z] : [x, -1, z]; }, ['#6ac8ff', '#a8e8ff', '#7a8aff', '#c89aff', '#8affd8']);
+  Z.capim(L.group, 700, () => { const a = Z.R() * 6.28, r = 2.5 + Math.sqrt(Z.R()) * (BORDA - 3.4), x = Math.sin(a) * r, z = Math.cos(a) * r; return longeDaTrilha(x, z) ? [x, 0, z] : [x, -1, z]; }, ['#2a6a52', '#3a8a62', '#2a5a7a', '#5a4a9a']);
+  // a trilha de pedras com brasinhas
+  const trilhaT = Z.pedrinhas('#241c3e', ['#5a4a72', '#6a5880', '#4a3e68', '#74608a']);
+  Z.estrada(L.group, [[0, R + 6.4], [.25, 13], [-.3, 8], [-.9, 3], [-1.7, -2.6]], 2.5, trilhaT, { y: .035 });
+  for (let i = 0; i < 18; i++) { const z = R + 5.6 - i * 1.3, x = (i % 2 ? 1 : -1) * (1.15 + Z.R() * .2) - Math.max(0, 8 - z) * .1; Z.brilho(L.group, i % 4 ? '#ff9a2a' : '#ffd24a', .55, x, .1, z, .95); Z.brilho(L.group, '#ff6a10', 1.5, x, .08, z, .22); }
+  for (const [x, z, c] of [[-3.4, -4, '#6aff8a'], [3.4, -6, '#6ab8ff'], [-7.2, 3.4, '#8ae8c8']]) Z.brilho(L.group, c, 3, x, .9, z, .3);
+  Z.vagalumes(L.group, 70, [-16, 16, .3, 3.4, -16, 18], '#fff2a0', .04);
+  Z.vagalumes(L.group, 50, [-20, 20, .2, 9, -22, 18], '#9ad8ff', .035, .35);
+  Z.relampago(longe, { de: Math.PI + .5, ate: Math.PI + 1.7, dist: 66, y: 17, alt: 28, cada: 11 });
+
   // o fim da floresta: antes da revelação é só mato fechado; depois vira o corredor de cogumelos até Matagalé
   const tampa = E.add(new THREE.Group()), corredor = E.add(new THREE.Group());
-  { const folha = lam({ color: 0x1e3a22 });
+  { const folha = lam({ color: 0x1e4a3a, emissive: 0x08180e });
     for (let i = 0; i < 9; i++) { const m = new THREE.Mesh(new THREE.IcosahedronGeometry(1.1 + (i % 3) * .3, 0), folha); m.position.set(-2.4 + (i % 5) * 1.2, .7 + (i > 4 ? 1.1 : 0), -R - .6 - (i > 4 ? .5 : 0)); tampa.add(m); }
     for (let i = 0; i < 5; i++) for (const s of [-1, 1]) { const alt = 2.4 + (i % 2) * .7, z = -R + .2 - i * 1.25;
       const st = new THREE.Mesh(new THREE.CylinderGeometry(.14, .22, alt, 6), stemM); st.position.set(s * 1.95, alt / 2, z); corredor.add(st);
-      const cp = new THREE.Mesh(new THREE.SphereGeometry(.85, 8, 5, 0, Math.PI * 2, 0, Math.PI / 2), lam({ color: i % 2 ? 0x3a8a4a : 0x6ab04a, side: THREE.DoubleSide })); cp.position.set(s * 1.95, alt, z); cp.scale.y = .6; corredor.add(cp); } }
+      const cp = new THREE.Mesh(new THREE.SphereGeometry(.85, 12, 6, 0, Math.PI * 2, 0, Math.PI / 2), lam({ color: i % 2 ? 0x3ac8a0 : 0x6ad04a, emissive: i % 2 ? 0x104a38 : 0x1c4010, side: THREE.DoubleSide })); cp.position.set(s * 1.95, alt, z); cp.scale.y = .6; corredor.add(cp); } }
   let abriu = false;
   const abreCorredor = () => {
     const on = Q.mata >= 1; tampa.visible = !on; corredor.visible = on;
     if (on && !abriu) { abriu = true; E.portal(0, -R - 4.9, 0, 'MATAGALÉ →', '#9aff7a'); }
   };
-  E.trigger(p => Q.mata >= 1 && p.z < -R - 4.2, () => { E.goTo('matagale'); });
-  const glowM = basic({ color: 0x9affd8 });
-  const glows = [];
-  for (let i = 0; i < 30; i++) { const a = rnd() * 6.28, r = 2 + rnd() * 12; const m = E.add(new THREE.Mesh(new THREE.SphereGeometry(.06 + rnd() * .05, 5, 4), glowM)); m.position.set(Math.sin(a) * r, .1, Math.cos(a) * r); }
-  const flyM = basic({ color: 0xfff0a0, fog: false });
-  for (let i = 0; i < 24; i++) { const m = E.add(new THREE.Mesh(new THREE.SphereGeometry(.035, 4, 3), flyM)); m.userData.p = [rnd() * 6.28, rnd() * 10, .5 + rnd() * 2.5]; glows.push(m); }
-  const pl = E.add(new THREE.PointLight(0x9affd8, 14, 12, 1.5)); pl.position.set(0, 2, -2);
+  E.trigger(p => Q.mata >= 1 && p.z < -R - 4.2 && Math.abs(p.x) < 1.7, () => { E.goTo('matagale'); });
+  const pl = E.add(new THREE.PointLight(0x9affd8, 12, 13, 1.5)); pl.position.set(0, 2, -2);
 
   /* o cantinho do Mago: caldeirão, a poção de calvície e o aviso do Goblin */
   const caul = E.add(new THREE.Mesh(new THREE.SphereGeometry(.55, 10, 6, 0, Math.PI * 2, Math.PI / 2.4, Math.PI / 1.7), lam({ color: 0x2a2a2e, side: THREE.DoubleSide }))); caul.position.set(-3.4, .5, -4);
@@ -87,7 +191,6 @@ export function build(E, L) {
   coco.position.set(5.6, 0, -3);
   for (const n of [mago, macaco, esferas, coco]) E.circle(n.position.x, n.position.z, .35);
   const talkBox = (n, label, fn) => E.interact(E.hitbox(.9, 1.8, .9, n.position.x, 1, n.position.z), { label: () => C.talking || S.dlg ? '' : '[E] ' + label, act: () => { if (!C.talking && !S.dlg) { C.talking = true; Promise.resolve(fn()).finally(() => { C.talking = false; }); } } });
-  const voz = id => { if (id) E.voice(id, '', 'x'); };
   const M = '#c8a0ff', K = '#e8b070', PE = '#9fd8ff', PC = '#d8a070';
   // depois das goiabas: o sequestro. A luta final só abre depois de resgatar o Serjão e devolver o boné
   const precisaMata = () => Q.armas && (Q.st || 0) < 2;
@@ -124,7 +227,7 @@ export function build(E, L) {
         ['VOCÊ', 'E como a gente para ele?'],
         ['MAGO', 'Com goiaba. Duas máquinas de atirar goiaba: uma doce, que atira rápido, e uma azeda, que bate forte.', M],
       ]);
-      Q.plano = true; E.save(); voz('m_goiabas');
+      Q.plano = true; E.save();
       await E.conversa([['MAGO', 'Traga as goiabas doces e as azedas. O resto, o Macaco monta.', M]]);
       E.toast('Missão das goiabas<small>doces: Pássaro das Esferas · azedas: Pássaro Cocô</small>');
       return;
@@ -136,11 +239,10 @@ export function build(E, L) {
     if (!Q.plano) return E.conversa([['MACACO', 'Fala com o Mago primeiro, chefe. Ele gosta de explicar as coisas.', K]]);
     if (Q.armas) return E.conversa([['MACACO', 'Doce no [Q], azeda no [Q] de novo. E se encher as cartas... SUPER GOIABADA! Eu que inventei.', K]]);
     if (!(Q.doces && Q.azedas)) return E.conversa([['MACACO', 'Sem goiaba não tem máquina! Uma doce e uma azeda.', K]]);
-    voz('k_oi');
     await E.conversa([['MACACO', 'Ô, chegou com as goiabas! Segura aí.', K]]);
     for (let k = 0; k < 6; k++) E.later(k * .3, () => { E.noiseHit(.08, .25, 1800, null, 'highpass'); E.tone(180, .06, .06, 'square'); });
     await E.conversa([['MACACO', 'Aperta aqui... solda ali... um pouquinho de mágica do Mago...', K], ['MAGO', '*faz um gesto misterioso com as mãos*', M]]);
-    E.sfx.chime(); L.glitchT = .2; voz('k_monta');
+    E.sfx.chime(); L.glitchT = .2;
     await E.conversa([['MACACO', 'Pronto, chefe! Duas máquinas: uma doce, uma azeda.', K], ['MAGO', 'A doce atira rápido. A azeda bate forte. Pena rosa você rebate pulando de novo em cima. E se encher as cartas, solta o especial.', M], ['MAGO', 'Guarde bem. Essas máquinas vão com você até o fim.', M]]);
     Q.armas = true; E.save();
     E.toast('Arma especial: máquinas de goiaba<small>ela é sua daqui pra frente · fale com o Mago</small>');
@@ -186,21 +288,18 @@ export function build(E, L) {
     if (Q.st >= 3) return tempoQuest();   // o segredo: depois da luta, ele tem uma coisa grande pra conceder
     if (!Q.plano) return E.conversa([['PÁSSARO DAS ESFERAS', '...', PE], ['VOCÊ', '(Ele te olha. As duas esferas brilham. Não diz nada.)']]);
     if (Q.doces) return E.conversa([['PÁSSARO DAS ESFERAS', 'Já concedi. E não peça careca.', PE]]);
-    voz('pe_pedido');
     await E.conversa([['PÁSSARO DAS ESFERAS', 'Eu concedo pedidos.', PE], ['PÁSSARO DAS ESFERAS', 'Mas só se você pedir.', PE]]);
     const i = await E.choice('O que você faz?', ['Pedir as goiabas doces', 'Ficar quieto'], 1, 12);
-    if (i === 0) { await E.conversa([['VOCÊ', 'Eu peço... as goiabas doces.']]); await concede(); voz('pe_doces'); await E.conversa([['PÁSSARO DAS ESFERAS', 'Pedido concedido. Goiabas doces.', PE], ['PÁSSARO DAS ESFERAS', 'Da última vez pediram uma poção e todo mundo ficou careca. Você pediu certo.', PE]]); Q.doces = true; E.save(); E.toast('Goiabas doces<small>' + (Q.azedas ? 'leve pro Macaco' : 'falta a azeda') + '</small>'); }
+    if (i === 0) { await E.conversa([['VOCÊ', 'Eu peço... as goiabas doces.']]); await concede(); await E.conversa([['PÁSSARO DAS ESFERAS', 'Pedido concedido. Goiabas doces.', PE], ['PÁSSARO DAS ESFERAS', 'Da última vez pediram uma poção e todo mundo ficou careca. Você pediu certo.', PE]]); Q.doces = true; E.save(); E.toast('Goiabas doces<small>' + (Q.azedas ? 'leve pro Macaco' : 'falta a azeda') + '</small>'); }
     else await E.conversa([['VOCÊ', '(Você não pediu. Ele não concedeu. Funciona assim.)']]);
   });
   talkBox(coco, 'Falar com o Pássaro Cocô', async () => {
     if (Q.azedas) return E.conversa([['PÁSSARO COCÔ', 'Bom descanso. E não segura o cocô.', PC]]);
-    if (Q.refri) { voz('pc_valeu'); await E.conversa([['PÁSSARO COCÔ', 'Geladinho! Toma as azedas. E não segura o cocô.', PC]]); Q.azedas = true; Q.refri = false; E.save(); E.sfx.chime(); E.toast('Goiabas azedas<small>' + (Q.doces ? 'leve pro Macaco' : 'falta a doce') + '</small>'); return; }
-    voz('pc_coco');
+    if (Q.refri) { await E.conversa([['PÁSSARO COCÔ', 'Geladinho! Toma as azedas. E não segura o cocô.', PC]]); Q.azedas = true; Q.refri = false; E.save(); E.sfx.chime(); E.toast('Goiabas azedas<small>' + (Q.doces ? 'leve pro Macaco' : 'falta a doce') + '</small>'); return; }
     await E.conversa([['PÁSSARO COCÔ', 'Boa noite, pessoal do grupo. Quer dizer... boa noite, você.', PC], ['PÁSSARO COCÔ', 'Antes de todo mundo ir dormir, uma pergunta muito importante: você já fez cocô hoje?', PC]]);
     const i = await E.choice('Já fez cocô hoje?', ['Já', 'Ainda não'], 1, 10);
     await E.conversa([['PÁSSARO COCÔ', i === 0 ? 'Muito bem. Orgulho da família.' : 'Não segura, hein. Faz mal.', PC]]);
     if (!Q.plano) return;
-    voz('pc_troca');
     await E.conversa([['PÁSSARO COCÔ', 'Eu fico acordado até tarde mandando mensagem no grupo. Dá uma sede...', PC], ['PÁSSARO COCÔ', 'Troco minhas goiabas azedas por um refri gelado da Pobresa.', PC]]);
     Q.pediuRefri = true; E.save(); E.toast('Um refri gelado<small>nas geladeiras da Pobresa, no centro</small>');
   });
@@ -309,11 +408,13 @@ export function build(E, L) {
   const arch = E.canvasTex(48, 16, g => { g.fillStyle = '#5a3a22'; g.fillRect(0, 0, 48, 16); g.fillStyle = '#ffe9a8'; g.font = 'bold 6px monospace'; g.textAlign = 'center'; g.fillText('← CENTRO', 24, 10); });
   { const s = E.add(new THREE.Mesh(new THREE.PlaneGeometry(1.6, .55), basic({ map: arch, side: THREE.DoubleSide }))); s.position.set(1.8, 1.7, R + 2); box(.08, 1.7, .08, lam({ color: 0x5a3a22 }), 1.8, .85, R + 2.02, { occ: false }); }
   E.portal(0, R + 4.9, Math.PI, '← VOLTAR PRO CENTRO', '#ffd23a');
-  E.trigger(p => p.z > R + 4.4, () => { E.goTo('centro'); });
+  E.trigger(p => p.z > R + 4.4 && Math.abs(p.x) < 1.7, () => { E.goTo('centro'); });
 
   E.moedas([[0, null, 10], [-8, null, -1], [0, null, -9], [6, null, -9.5]]);
 
   L.ambience = bus => { E.loopNoise('bandpass', 5200, 9, .012, bus); E.loopNoise('lowpass', 240, 0, .03, bus); };
+  L.idle = () => { longe.position.set(E.camera.position.x, 0, E.camera.position.z); Z.tique(1 / 60, performance.now() / 1000); };
+  L.exit = () => Z.soltar();
   L.enter = () => {
     E.later(1, () => E.toast('Floresta de cogumelos<small>o Mago e o Macaco moram aqui · [H] dica</small>'));
     if (precisaMata() && !Q.mata) E.later(3, () => E.say('(O Mago está me chamando. Ele parece preocupado.)', 4));
@@ -322,7 +423,7 @@ export function build(E, L) {
   };
   L.update = dt => {
     const t = L.t;
-    for (const m of glows) { const [a, h, r] = m.userData.p; m.position.set(Math.sin(a + t * .3) * (3 + h), r + Math.sin(t * 2 + a) * .3, Math.cos(a * 1.3 + t * .25) * (3 + h)); }
+    longe.position.set(E.camera.position.x, 0, E.camera.position.z); Z.tique(dt, t);
     bolha.userData.tick(t);
     if (Q.tempo === 1) { const p = E.player.pos; for (const m of luzes) { if (!m.visible) continue; m.position.y = .7 + Math.sin(t * 2 + m.position.x) * .15; if (Math.hypot(p.x - m.position.x, p.z - m.position.z) < 1.1) { Q.luzes[m.userData.id] = true; m.visible = false; E.save(); E.sfx.chime(); E.toast(`Luz das esferas<small>${luzAch()}/3</small>`); if (luzAch() === 3) E.later(1.5, () => E.say('(As três. Agora é voltar pro Pássaro das Esferas.)', 4)); } } }
     if (maquina.visible) { aneis[0].rotation.y += dt * 1.6; aneis[1].rotation.z += dt * 1.1; }

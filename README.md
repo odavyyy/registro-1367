@@ -12,9 +12,18 @@ Um jogo curto de terror **dreamcore** em primeira pessoa, no estilo PS1 e fita V
 
 > 🚧 **O jogo está em ALFA** e recebe atualização quase todo dia. Achou um bug? **[Relate aqui](https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml)** que a gente corrige o mais rápido possível.
 >
-> 📼 A mais nova: a **v2.9** trouxe uma **história nova**: Matagalé, a árvore do Passarex, a chefe **RataBrumga** e o resgate do Serjão. Veja a lista em [Atualizações](#atualizações).
+> 📼 A mais nova: a **v2.10** trouxe **três fases novas**, a floresta refeita com **dragões**, vozes, música nova e tela **16:9**. Veja a lista em [Atualizações](#atualizações).
 
 ## Atualizações
+
+### v2.10 · Dragões e lugares de sonho (28/11/2026)
+- **Três fases novas**: Depois das salas amarelas, a porta do arco-íris leva a **A vila do sol que dorme**, **A estrada das estrelas** e **O reino adormecido**: dez lugares pra andar e explorar, no clima dark fantasy.
+- **Floresta refeita**: A floresta do Mago e do Macaco ganhou céu em espiral, castelo, **dragões**, um vale com vila e um mirante. As missões continuam as mesmas.
+- **Tela 16:9**: O jogo ficou mais largo: dá pra ver mais e maior.
+- **Vozes**: As falas principais agora têm voz: as narrações novas, o Mago, o Macaco, os pássaros, o pessoal de Matagalé, o Serjão, o Rosengo e mais.
+- **Som**: Música dark fantasy própria na floresta e nas fases novas, e os dragões rugem, batem as asas, cospem fogo e roncam.
+- **Mais leve**: O áudio foi comprimido: mesmo com tudo isso, o jogo ficou um pouco menor.
+- **Capítulos**: Três capítulos novos no menu (os de depois mudaram de número). Quem já tinha passado da sala de brincar recebe os três liberados.
 
 ### Jogue aqui no site (28/11/2026)
 - Agora dá pra **jogar numa janela no próprio site**, com tela cheia (no celular, página inteira). O progresso salvo no itch.io não passa pro site.

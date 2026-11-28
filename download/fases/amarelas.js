@@ -94,7 +94,7 @@ export function build(E, L) {
   const exitDoor = E.box(1, 2.05, .08, basic({ color: 0xf6c1d6, fog: false }), exitX, 1.03, exitZ + .18);
   E.box(.08, .08, .06, basic({ color: 0xf0d070, fog: false }), exitX + .32, 1.0, exitZ + .24, { occ: false });
   const exitPos = new THREE.Vector3(exitX, 1.3, exitZ + .6);
-  E.interact(exitDoor, { label: () => '[E] Abrir a porta do arco-íris', act: () => { E.sfx.creak(); E.goTo('brinquedo'); } });
+  E.interact(exitDoor, { label: () => '[E] Abrir a porta do arco-íris', act: () => { E.sfx.creak(); E.goTo('vilasol'); } });
 
   /* o desenho de criança perto do começo */
   const draw = E.canvasTex(64, 48, g => {

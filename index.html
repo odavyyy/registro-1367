@@ -189,7 +189,7 @@ dialog footer{display:flex;align-items:center;justify-content:space-between;gap:
 main>section#jogo:not(.home){max-width:none;margin:0}
 #jogo{display:flex;flex-direction:column;align-items:center;gap:12px;padding:56px var(--g) 24px;scroll-margin-top:0}
 #jogo h2{margin:0;font:400 clamp(28px,3vw,44px)/1 var(--display);color:var(--yel);text-align:center}
-#jogo .tela{position:relative;width:min(100%,1100px,calc((100svh - 40px) * 4 / 3));aspect-ratio:4/3;background:#000;border:1px solid #ffffff3a;border-radius:10px;overflow:hidden;box-shadow:-3px 3px 0 var(--red),0 20px 60px #000c}
+#jogo .tela{position:relative;width:min(100%,1280px,calc((100svh - 40px) * 16 / 9));aspect-ratio:16/9;background:#000;border:1px solid #ffffff3a;border-radius:10px;overflow:hidden;box-shadow:-3px 3px 0 var(--red),0 20px 60px #000c}
 #jogo .tela iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#000}
 #jogo .tela:fullscreen{width:100vw;height:100vh;border:0;border-radius:0}
 #jogo .liga{position:absolute;inset:0;width:100%;border:0;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:400 clamp(24px,4vw,52px)/1 var(--display);color:var(--yel);background:#000 url(imagens/capa.jpg) center/cover;text-shadow:0 2px 10px #000,0 0 4px #000}
@@ -230,7 +230,7 @@ html.jogando .vhs-fx,html.jogando .radio,html.jogando .playbar{display:none}
         <p class="aviso">Contém sustos repentinos, luzes piscando e sons altos.</p>
       </div>
     </div>
-    <div class="hfoot"><div>Hora em Naviraí <strong id="clock">MS</strong></div><a class="scroll" href="#jogo">▼ rolar a fita</a><span class="stamp">● REC<br>v2.9.1</span></div>
+    <div class="hfoot"><div>Hora em Naviraí <strong id="clock">MS</strong></div><a class="scroll" href="#jogo">▼ rolar a fita</a><span class="stamp">● REC<br>v2.10</span></div>
   </section>
 
   <section id="jogo" aria-labelledby="jogoTit">
@@ -244,7 +244,7 @@ html.jogando .vhs-fx,html.jogando .radio,html.jogando .playbar{display:none}
     <h2>Trailer</h2>
     <div class="video"><button id="tocaTrailer" style="position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#000 url(imagens/capa.jpg) center/cover;color:#ffe9a8;font-family:VT323,monospace;font-size:clamp(22px,5vw,34px)" aria-label="Tocar o trailer (carrega o player do YouTube)"><span style="background:rgba(0,0,0,.72);padding:.25em .7em;border-radius:6px">▶ TOCAR O TRAILER<br><small style="font-size:.5em;font-family:Inter,system-ui,sans-serif">ao tocar, o vídeo carrega do YouTube</small></span></button></div>
     <p class="card" style="margin-top:14px;border-color:#ff8f6a">🚧 <b>O jogo está em ALFA</b> e recebe atualização quase todo dia. Achou um bug? <a href="https://github.com/odavyyy/registro-1367/issues/new?template=bug.yml" target="_blank" rel="noopener"><b>Relate aqui</b></a> (não precisa saber programar, é só um formulário) que a gente corrige o mais rápido possível.</p>
-    <p class="card" style="margin-top:14px">📼 A mais nova: a <b>v2.9</b> trouxe uma <b>história nova</b>: Matagalé, a árvore do Passarex, a chefe <b>RataBrumga</b> e o resgate do Serjão. <a href="#atualizacoes">Ver todas as atualizações</a> · segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber da próxima.</p>
+    <p class="card" style="margin-top:14px">📼 A mais nova: a <b>v2.10</b> trouxe <b>três fases novas</b>, a floresta refeita com <b>dragões</b>, vozes, música nova e tela <b>16:9</b>. <a href="#atualizacoes">Ver todas as atualizações</a> · segue o <a href="https://www.instagram.com/odavyyy1/">@odavyyy1</a> para saber da próxima.</p>
   </section>
 
   <section id="atualizacoes" class="reveal">
@@ -252,6 +252,20 @@ html.jogando .vhs-fx,html.jogando .radio,html.jogando .playbar{display:none}
     <p>O que mudou em cada versão. A mais nova fica em cima.</p>
 
     <div class="card log novo">
+      <h3>v2.10 · Dragões e lugares de sonho</h3>
+      <div class="when">28 de novembro de 2026</div>
+      <ul>
+        <li><b>Três fases novas</b>: Depois das salas amarelas, a porta do arco-íris leva a <b>A vila do sol que dorme</b>, <b>A estrada das estrelas</b> e <b>O reino adormecido</b>: dez lugares pra andar e explorar, no clima dark fantasy.</li>
+        <li><b>Floresta refeita</b>: A floresta do Mago e do Macaco ganhou céu em espiral, castelo, <b>dragões</b>, um vale com vila e um mirante. As missões continuam as mesmas.</li>
+        <li><b>Tela 16:9</b>: O jogo ficou mais largo: dá pra ver mais e maior.</li>
+        <li><b>Vozes</b>: As falas principais agora têm voz: as narrações novas, o Mago, o Macaco, os pássaros, o pessoal de Matagalé, o Serjão, o Rosengo e mais.</li>
+        <li><b>Som</b>: Música dark fantasy própria na floresta e nas fases novas, e os dragões rugem, batem as asas, cospem fogo e roncam.</li>
+        <li><b>Mais leve</b>: O áudio foi comprimido: mesmo com tudo isso, o jogo ficou um pouco menor.</li>
+        <li><b>Capítulos</b>: Três capítulos novos no menu (os de depois mudaram de número). Quem já tinha passado da sala de brincar recebe os três liberados.</li>
+      </ul>
+    </div>
+
+    <div class="card log">
       <h3>Jogue aqui no site</h3>
       <div class="when">28 de novembro de 2026</div>
       <ul>

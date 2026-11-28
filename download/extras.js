@@ -38,15 +38,16 @@ export function instalar(E) {
     if (!fila) return;
     if (mostrando < cheio.length) { mostrando = cheio.length; dlg.querySelector('.t').textContent = cheio; return; }   // pula a digitação
     const l = fila.linhas.shift();
-    if (!l) { dlg.classList.remove('on'); const r = fila.res; fila = null; S.dlg = false; r(); return; }
+    if (!l) { E.falaPara(); dlg.classList.remove('on'); const r = fila.res; fila = null; S.dlg = false; r(); return; }
     const [quem, txt, cor] = Array.isArray(l) ? l : [l.quem, l.txt, l.cor];
+    E.falaDe(quem, txt);   // quem tem voz gravada fala; os outros ficam só na legenda
     const tr = s => (window.I18N ? I18N.T(s) : s);   // o texto vai traduzido inteiro (a digitação letra a letra não passa pelo tradutor)
     dlg.querySelector('.q').textContent = tr(quem || ''); dlg.querySelector('.q').style.color = cor || (quem === 'VOCÊ' ? '#9fd8ff' : '#ffd27a');
     cheio = tr(txt || ''); mostrando = 0; dlg.querySelector('.t').textContent = ''; dlg.classList.add('on');
     if (quem && E.ac()) E.tone(quem === 'VOCÊ' ? 500 : 340, .05, .02, 'square');
   }
   E.dlgNext = prox;
-  E.dlgFechar = () => { if (!fila) return; dlg.classList.remove('on'); const r = fila.res; fila = null; S.dlg = false; cheio = ''; mostrando = 0; r(); };
+  E.dlgFechar = () => { if (!fila) return; E.falaPara(); dlg.classList.remove('on'); const r = fila.res; fila = null; S.dlg = false; cheio = ''; mostrando = 0; r(); };
   E.dlgTick = dt => {
     if (!fila || mostrando >= cheio.length) return;
     tipT += dt; while (tipT > .022 && mostrando < cheio.length) { tipT -= .022; mostrando++; }

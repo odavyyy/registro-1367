@@ -3,6 +3,9 @@ import * as THREE from 'three';
 import * as casa from './fases/casa.js';
 import * as colinas from './fases/colinas.js';
 import * as amarelas from './fases/amarelas.js';
+import * as vilasol from './fases/vilasol.js';
+import * as estrelas from './fases/estrelas.js';
+import * as reino from './fases/reino.js';
 import * as brinquedo from './fases/brinquedo.js';
 import * as avenida from './fases/avenida.js';
 import * as navio from './fases/navio.js';
@@ -15,9 +18,9 @@ import * as matagale from './fases/matagale.js';
 import * as arvore from './fases/arvore.js';
 import { instalar as instalarExtras } from './extras.js';
 
-const FASES = { casa, colinas, amarelas, brinquedo, navio, salabranca, avenida, centro, floresta, matagale, arvore, portoes, ilha };
+const FASES = { casa, colinas, amarelas, vilasol, estrelas, reino, brinquedo, navio, salabranca, avenida, centro, floresta, matagale, arvore, portoes, ilha };
 const $ = id => document.getElementById(id);
-const RW = 320, RH = 240;
+const RW = 426, RH = 240;   // 16:9 (era 4:3, 320x240, até a v2.9.1)
 const params = new URLSearchParams(location.search);
 const DEBUG = params.has('debug');
 
@@ -34,14 +37,14 @@ const renderer = new THREE.WebGLRenderer({ antialias: false });
 renderer.setPixelRatio(1);
 wrap.prepend(renderer.domElement);
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(62, 4 / 3, .1, 90);
+const camera = new THREE.PerspectiveCamera(62, 16 / 9, .1, 90);
 camera.rotation.order = 'YXZ';
 E.scene = scene; E.camera = camera;
 const rt = new THREE.WebGLRenderTarget(RW, RH, { minFilter: THREE.NearestFilter, magFilter: THREE.NearestFilter });
 
 const postU = E.post = {
   tDiffuse: { value: rt.texture }, time: { value: 0 }, glitch: { value: 0 }, pull: { value: 0 },
-  red: { value: 0 }, fade: { value: 0 }, res: { value: new THREE.Vector2(640, 480) }
+  red: { value: 0 }, fade: { value: 0 }, res: { value: new THREE.Vector2(854, 480) }
 };
 const postMat = new THREE.ShaderMaterial({
   uniforms: postU,
@@ -83,7 +86,7 @@ const postScene = new THREE.Scene();
 const postCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
 postScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), postMat));
 function resize() {
-  const h = Math.min(innerHeight, innerWidth * 3 / 4), w = h * 4 / 3;
+  const h = Math.min(innerHeight, innerWidth * 9 / 16), w = h * 16 / 9;
   renderer.setSize(w, h);
   wrap.style.width = w + 'px'; wrap.style.height = h + 'px';
   postU.res.value.set(w, h);
@@ -333,7 +336,7 @@ function playBuf(buf, vol, o = {}) {
   return s;
 }
 // áudio gravado avulso (ex.: "PÁSSARO!", "O Clubex me chamou"), carregado na hora
-E.somGravado = async (n, vol = 1) => { if (!AC) return; await loadSfx([n]); if (SFX[n]) playBuf(SFX[n], vol); };
+E.somGravado = async (n, vol = 1, o = {}) => { if (!AC) return; await loadSfx([n]); if (SFX[n]) playBuf(SFX[n], vol, o); };
 // música de fundo em loop, com troca suave e abaixando quando alguém fala
 const MUS = { name: null, src: null, g: null, base: 0 };
 function setMusic(name, vol = .2) {
@@ -353,7 +356,14 @@ function duckMusic() {   // abaixa a música enquanto uma voz fala
   MUS.g.gain.setTargetAtTime(MUS.base * OPT.music * (talking ? .4 : 1), AC.currentTime, .25);
 }
 E.setMusic = setMusic; E.MUS = MUS; E.loadSfx = loadSfx;
-function levelMusic() { if (RADIO_ON) return; setMusic('trilha', .22); }   // a trilha toca em loop o jogo inteiro (todas as fases)
+// a trilha toca em loop o jogo inteiro; a floresta e os lugares do sonho têm a música dark fantasy deles
+const MUSICA_FASE = { floresta: ['fantasia', .3], vilasol: ['fantasia', .3], estrelas: ['fantasia', .3], reino: ['adormecido', .32] };
+function levelMusic() {
+  if (RADIO_ON) return;
+  const [nome, vol] = (L && MUSICA_FASE[L.id]) || ['trilha', .22];
+  if (!AC) return;
+  loadSfx([nome]).then(() => { const [agora] = (L && MUSICA_FASE[L.id]) || ['trilha']; if (agora === nome && !state.ended && !RADIO_ON) setMusic(nome, vol); });
+}
 
 // legenda de som (só no inglês): quem não entende português acompanha o que está acontecendo. No máximo uma a cada 6 s,
 // e nunca por cima de uma fala.
@@ -449,10 +459,26 @@ E.end = html => {
 const VOZ = { dur: {}, buf: {}, src: null };
 async function loadVoices() {
   try { VOZ.dur = await (await fetch('audio/voz/duracoes.json', { cache: 'no-cache' })).json(); } catch (e) { return; }
-  await Promise.all(Object.keys(VOZ.dur).map(async id => {
+  await Promise.all(Object.keys(VOZ.dur).filter(id => !id.startsWith('f_')).map(async id => {
     try { const ab = await (await fetch(`audio/voz/${id}.mp3`)).arrayBuffer(); VOZ.buf[id] = await AC.decodeAudioData(ab); } catch (e) {}
   }));
 }
+// voz de uma fala de diálogo: o arquivo se chama 'f_' + uma conta feita com "QUEM|texto" (a mesma do ferramentas/falas_principais.py)
+const idFala = s => { let h = 5381; for (const c of s) h = (Math.imul(h, 33) ^ c.codePointAt(0)) >>> 0; return 'f_' + h.toString(16).padStart(8, '0'); };
+let falaVez = 0, falaSrc = null;
+E.falaPara = () => { falaVez++; if (falaSrc) { try { falaSrc.stop(); } catch (e) {} if (VOZ.src === falaSrc) VOZ.until = 0; falaSrc = null; } };
+E.falaDe = async (quem, txt) => {
+  E.falaPara();
+  const id = idFala(`${quem}|${txt}`), vez = falaVez;
+  if (!AC || !VOZ.dur[id]) return false;
+  try { if (!VOZ.buf[id]) VOZ.buf[id] = await AC.decodeAudioData(await (await fetch(`audio/voz/${id}.mp3`)).arrayBuffer()); } catch (e) { return false; }
+  if (vez !== falaVez) return false;   // já passou pra outra fala
+  if (VOZ.src) { try { VOZ.src.stop(); } catch (e) {} }
+  const s = AC.createBufferSource(); s.buffer = VOZ.buf[id]; s.connect(E.gain(1.15, master)); s.start();
+  falaSrc = VOZ.src = s; VOZ.until = AC.currentTime + s.buffer.duration;
+  return true;
+};
+E.idFala = idFala;
 // toca uma fala com legenda; o:{dest, pan, vol}
 E.voice = (id, text, cls = 'tv', o = {}) => {
   const b = VOZ.buf[id], dur = b ? b.duration : (VOZ.dur[id] || Math.max(2, text.length / 14));
@@ -471,12 +497,12 @@ E.voice = (id, text, cls = 'tv', o = {}) => {
 
 /* ============ sustos ============ */
 // o rosto: o Passarex enorme, olhos vazios, boca aberta, tudo avermelhado
-const scareCv = document.createElement('canvas'); scareCv.width = 640; scareCv.height = 480; scareCv.id = 'scareCv';
+const scareCv = document.createElement('canvas'); scareCv.width = 854; scareCv.height = 480; scareCv.id = 'scareCv';
 $('scare').appendChild(scareCv);
 function drawScare(k = 0) {
   const g = scareCv.getContext('2d'), s = 2.5 + k * .25;
-  g.fillStyle = '#000'; g.fillRect(0, 0, 640, 480);
-  g.save(); g.translate(320 + (Math.random() - .5) * 20, 230 + 600 * s * 1.25); g.scale(s, s * 1.25);
+  g.fillStyle = '#000'; g.fillRect(0, 0, 854, 480);
+  g.save(); g.translate(427 + (Math.random() - .5) * 20, 230 + 600 * s * 1.25); g.scale(s, s * 1.25);
   window.drawPassarex(g, 1.6, {});
   g.fillStyle = '#000';
   const PE = window.PX_EYE;
@@ -484,13 +510,13 @@ function drawScare(k = 0) {
   g.fillStyle = '#f4e2a8'; for (const ex of [PE.lx, PE.rx]) { g.beginPath(); g.arc(ex + (Math.random() - .5) * 4, PE.y + 4, 2.6, 0, 7); g.fill(); }
   g.fillStyle = '#0a0203'; g.beginPath(); g.ellipse(2, PE.my + 12, 22, 40, 0, 0, 7); g.fill();
   g.restore();
-  g.globalCompositeOperation = 'multiply'; g.fillStyle = '#c8241c'; g.fillRect(0, 0, 640, 480);
+  g.globalCompositeOperation = 'multiply'; g.fillStyle = '#c8241c'; g.fillRect(0, 0, 854, 480);
   g.globalCompositeOperation = 'source-over';
-  const vg = g.createRadialGradient(320, 240, 120, 320, 240, 400); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.9)');
-  g.fillStyle = vg; g.fillRect(0, 0, 640, 480);
-  for (let i = 0; i < 900; i++) { g.fillStyle = Math.random() < .5 ? 'rgba(0,0,0,.5)' : 'rgba(255,200,190,.25)'; g.fillRect(Math.random() * 640, Math.random() * 480, 2, 2); }
-  for (let i = 0; i < 14; i++) { const y = Math.random() * 480, h = 2 + Math.random() * 10; g.drawImage(scareCv, 0, y, 640, h, (Math.random() - .5) * 60, y, 640, h); }
-  g.fillStyle = 'rgba(255,255,255,.08)'; for (let y = 0; y < 480; y += 3) g.fillRect(0, y, 640, 1);
+  const vg = g.createRadialGradient(427, 240, 150, 427, 240, 520); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.9)');
+  g.fillStyle = vg; g.fillRect(0, 0, 854, 480);
+  for (let i = 0; i < 1200; i++) { g.fillStyle = Math.random() < .5 ? 'rgba(0,0,0,.5)' : 'rgba(255,200,190,.25)'; g.fillRect(Math.random() * 854, Math.random() * 480, 2, 2); }
+  for (let i = 0; i < 14; i++) { const y = Math.random() * 480, h = 2 + Math.random() * 10; g.drawImage(scareCv, 0, y, 854, h, (Math.random() - .5) * 60, y, 854, h); }
+  g.fillStyle = 'rgba(255,255,255,.08)'; for (let y = 0; y < 480; y += 3) g.fillRect(0, y, 854, 1);
 }
 let scareT = 0, scareDur = 0, glitchTxtT = 0;
 E.scream = (vol = .5) => {
@@ -684,7 +710,7 @@ E.promo = `<div class="promo big">
 
 /* ============ save (fica no navegador de quem joga) ============ */
 const SAVE_KEY = 'registro1367-save';
-const NOMES = { ilha: 'a ilha dos Passarex', casa: 'a sala de casa', colinas: 'as colinas', amarelas: 'as salas amarelas', brinquedo: 'a sala de brincar', avenida: 'a avenida de Naviraí', navio: 'o navio de 1491', salabranca: 'a sala branca', centro: 'o centro de Naviraí', floresta: 'a floresta de cogumelos', matagale: 'Matagalé', arvore: 'a árvore do Passarex', portoes: 'os Portões do Clubex' };
+const NOMES = { ilha: 'a ilha dos Passarex', casa: 'a sala de casa', colinas: 'as colinas', amarelas: 'as salas amarelas', vilasol: 'a vila do sol que dorme', estrelas: 'a estrada das estrelas', reino: 'o reino adormecido', brinquedo: 'a sala de brincar', avenida: 'a avenida de Naviraí', navio: 'o navio de 1491', salabranca: 'a sala branca', centro: 'o centro de Naviraí', floresta: 'a floresta de cogumelos', matagale: 'Matagalé', arvore: 'a árvore do Passarex', portoes: 'os Portões do Clubex' };
 function readSave() {
   try { const s = JSON.parse(localStorage.getItem(SAVE_KEY)); return s && FASES[s.fase] ? s : null; } catch (e) { return null; }
 }
@@ -704,7 +730,7 @@ const SAVE0 = params.get('fase') || params.get('cap') ? null : readSave();
 
 /* ============ fases terminadas (dá pra repetir pelo menu) ============ */
 const REPLAY = params.has('repetir');
-const FASE_ORDER = ['casa', 'colinas', 'amarelas', 'brinquedo', 'navio', 'salabranca', 'avenida', 'centro', 'floresta', 'matagale', 'arvore'];
+const FASE_ORDER = ['casa', 'colinas', 'amarelas', 'vilasol', 'estrelas', 'reino', 'brinquedo', 'navio', 'salabranca', 'avenida', 'centro', 'floresta', 'matagale', 'arvore'];
 const DONE_KEY = 'registro1367-fases';
 const DONE = new Set((() => { try { return JSON.parse(localStorage.getItem(DONE_KEY)) || []; } catch (e) { return []; } })());
 function markDone(id) {
@@ -712,12 +738,16 @@ function markDone(id) {
   DONE.add(id); try { localStorage.setItem(DONE_KEY, JSON.stringify([...DONE])); } catch (e) {}
 }
 if (SAVE0) FASE_ORDER.slice(0, Math.max(0, FASE_ORDER.indexOf(SAVE0.fase))).forEach(markDone);   // quem já tinha save não perde nada
+if (DONE.has('brinquedo')) for (const id of ['vilasol', 'estrelas', 'reino']) { DONE.add(id); try { localStorage.setItem(DONE_KEY, JSON.stringify([...DONE])); } catch (e) {} }   // fases novas: já liberadas pra quem tinha passado dali
 /* ============ capítulos: dá pra voltar em qualquer um que você já alcançou (pra pegar o que faltou) ============ */
 const ACHOU = { st: 1, found: { praca: 1, pobreza: 1, if: 1 } };
 const CAPS = [
   { id: 'casa', nome: 'A fita', fase: 'casa' },
   { id: 'colinas', nome: 'As colinas', fase: 'colinas' },
   { id: 'amarelas', nome: 'As salas amarelas', fase: 'amarelas' },
+  { id: 'vilasol', nome: 'A vila do sol que dorme', fase: 'vilasol' },
+  { id: 'estrelas', nome: 'A estrada das estrelas', fase: 'estrelas' },
+  { id: 'reino', nome: 'O reino adormecido', fase: 'reino' },
   { id: 'brinquedo', nome: 'A sala de brincar', fase: 'brinquedo' },
   { id: 'navio', nome: 'Registro 1491', fase: 'navio' },
   { id: 'salabranca', nome: 'A sala branca', fase: 'salabranca' },
@@ -1035,6 +1065,9 @@ const HIST = {
   casa: [12, 'O Arquivo Passarex guarda fitas de quem viu o pássaro. Esta é a de número mil trezentos e sessenta e sete.'],
   colinas: [6, 'Quem assiste a fita entra nela. Os relatos de Naviraí falam de um pássaro com rosto de gente, que só assobia.'],
   amarelas: [6, 'Sessenta e sete relatos. Todos falam de corredores amarelos, de um zumbido e de um assobio no fim.'],
+  vilasol: [9, 'Atrás da porta do arco-íris não tinha sala nenhuma. Os relatos chamam isto de os lugares que a fita sonha.'],
+  estrelas: [10, 'Quem anda aqui não lembra de ter começado. Siga as luzes, e não discuta com quem for maior que você.'],
+  reino: [10, 'No fim do sonho tem um reino. Todo mundo aqui dorme. Não acorde ninguém.'],
   brinquedo: [9, 'Cada porta leva a uma lembrança. Uma delas leva até ele.'],
   navio: [12, 'Antes de Naviraí, antes de tudo: o pássaro já mostrava o caminho. O Douradex foi o primeiro a confiar nele.'],
   salabranca: [6, 'Entre um registro e outro, a fita grava esta sala. Ninguém sabe de quem é o computador.'],
@@ -1063,7 +1096,7 @@ function load(id) {
   state.prevId = L ? L.id : null;
   E.dlgFechar && E.dlgFechar();
   if (L && state.started && L.id !== id) markDone(L.id);
-  if (FASES[id] && ['casa', 'colinas', 'amarelas', 'brinquedo', 'navio', 'salabranca', 'avenida', 'floresta', 'matagale', 'arvore', 'portoes'].includes(id) && !(id === 'casa' && state.flags.final)) E.marcaCap && E.marcaCap(id);
+  if (FASES[id] && ['casa', 'colinas', 'amarelas', 'vilasol', 'estrelas', 'reino', 'brinquedo', 'navio', 'salabranca', 'avenida', 'floresta', 'matagale', 'arvore', 'portoes'].includes(id) && !(id === 'casa' && state.flags.final)) E.marcaCap && E.marcaCap(id);
   if (L) {
     L.exit && L.exit();
     scene.remove(L.group);
